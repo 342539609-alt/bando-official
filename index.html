@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邦豆品牌官网丨专注面部问题肌丨专业祛痘加盟优选</title>
+
+<!-- Open Graph / 微信朋友圈分享 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="邦豆品牌官网丨专注面部问题肌丨专业祛痘加盟优选">
+<meta property="og:description" content="18年专注问题肌修护品牌 · 100万+成功案例 · 八大专业中心全链路赋能 · 痘痘/痘坑/痘印/敏感肌/激素脸/毛孔粗大/淡斑/净白/水润/紧致十大管理项目 — 准备好唤醒你本来就很美的肌肤了吗？">
+<meta property="og:image" content="https://e056506edefc46f7a5f57945121925a1.app.codebuddy.work/cover.png">
+<meta property="og:image:width" content="1792">
+<meta property="og:image:height" content="1024">
+
+<!-- 微信专用 -->
+<meta itemprop="name" content="邦豆品牌官网丨专注面部问题肌丨专业祛痘加盟优选">
+<meta itemprop="description" content="18年专注问题肌修护品牌 · 100万+成功案例 · 八大专业中心全链路赋能">
+<meta itemprop="image" content="https://e056506edefc46f7a5f57945121925a1.app.codebuddy.work/cover.png">
+<style>
+  :root {
+    --primary: #1a3a8f;
+    --primary-light: #2952c4;
+    --accent: #b8902a;
+    --accent-light: #d4a93a;
+    --bg-dark: #04091a;
+    --bg-card: #080f26;
+    --bg-card2: #0d1835;
+    --text-light: #e8edf8;
+    --text-muted: #8fa3c8;
+    --glow: rgba(41,82,196,0.6);
+    --glow2: rgba(184,144,42,0.4);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+  }
+
+  /* ── 粒子背景 ── */
+  #particles-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(4,9,26,0.82);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(41,82,196,0.25);
+    transition: background 0.3s;
+  }
+  nav.scrolled {
+    background: rgba(4,9,26,0.97);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.6);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-logo img {
+    height: 44px;
+    filter: brightness(1.1) drop-shadow(0 0 8px rgba(41,82,196,0.7));
+    background: white;
+    border-radius: 6px;
+    padding: 2px;
+  }
+  .nav-logo span {
+    font-size: 14px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: color 0.25s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--accent-light);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(41,82,196,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(41,82,196,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: gridShift 20s linear infinite;
+  }
+  @keyframes gridShift {
+    0% { background-position: 0 0; }
+    100% { background-position: 48px 48px; }
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,82,196,0.18) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -60%);
+    pointer-events: none;
+    animation: pulse 4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -60%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -60%) scale(1.12); }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+    padding: 0 24px;
+  }
+  .hero-logo-wrap {
+    margin-bottom: 36px;
+  }
+  .hero-logo-wrap img {
+    width: 200px;
+    filter: drop-shadow(0 0 24px rgba(41,82,196,0.9));
+    animation: logoFloat 3.5s ease-in-out infinite;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+  }
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 6px 20px;
+    border: 1px solid var(--accent-light);
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--accent-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeInDown 1s ease both 0.2s;
+  }
+  .hero-title {
+    font-size: clamp(32px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease both 0.4s;
+  }
+  .hero-title .highlight {
+    background: linear-gradient(135deg, #4a8fff, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease both 0.6s;
+  }
+  .hero-cta {
+    display: inline-flex;
+    gap: 16px;
+    animation: fadeInUp 1s ease both 0.8s;
+  }
+  .btn-primary {
+    padding: 14px 40px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 24px rgba(41,82,196,0.5);
+    text-decoration: none;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -60%;
+    width: 40%; height: 200%;
+    background: rgba(255,255,255,0.12);
+    transform: skewX(-20deg);
+    transition: left 0.5s;
+  }
+  .btn-primary:hover::before { left: 120%; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(41,82,196,0.7); }
+  .btn-outline {
+    padding: 14px 40px;
+    background: transparent;
+    border: 1px solid rgba(41,82,196,0.6);
+    border-radius: 4px;
+    color: var(--text-light);
+    font-size: 15px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+  }
+  .btn-outline:hover {
+    background: rgba(41,82,196,0.12);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 36px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+    letter-spacing: 2px;
+    animation: bounce 2s ease-in-out infinite;
+    z-index: 2;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--primary-light), transparent);
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(6px); }
+  }
+
+  /* ── 通用 section ── */
+  section { position: relative; z-index: 1; }
+  .section-header {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+  .section-tag {
+    display: inline-block;
+    padding: 4px 16px;
+    background: rgba(41,82,196,0.15);
+    border: 1px solid rgba(41,82,196,0.35);
+    border-radius: 20px;
+    font-size: 11px;
+    color: var(--primary-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-weight: 700;
+    margin-bottom: 12px;
+    position: relative;
+    display: inline-block;
+  }
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; left: 50%;
+    transform: translateX(-50%);
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+  }
+  .section-desc {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+  }
+
+  /* ── STATS 数据条 ── */
+  #stats {
+    padding: 64px 48px;
+    background: linear-gradient(90deg, var(--bg-dark), rgba(8,15,38,0.95), var(--bg-dark));
+  }
+  .stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    flex: 1 1 auto;
+    min-width: 200px;
+    text-align: center;
+    padding: 24px 20px;
+    position: relative;
+  }
+  .stat-item::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 20%; bottom: 20%;
+    width: 1px;
+    background: rgba(41,82,196,0.3);
+  }
+  .stat-item:last-child::after { display: none; }
+  .stat-num {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #4a8fff, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+  }
+
+  /* ── CENTERS 八大中心 横滑滚轮 ── */
+  #centers {
+    padding: 100px 48px;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .centers-scroll-wrapper {
+    position: relative;
+    margin-top: 64px;
+  }
+  .centers-grid {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding: 16px 4px 20px;
+    cursor: grab;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(41,82,196,0.4) transparent;
+  }
+  .centers-grid::-webkit-scrollbar {
+    height: 6px;
+  }
+  .centers-grid::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 3px;
+  }
+  .centers-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+    border-radius: 3px;
+  }
+  .centers-grid:active {
+    cursor: grabbing;
+  }
+  .center-card {
+    flex: 0 0 310px;
+    scroll-snap-align: start;
+    position: relative;
+    background: var(--bg-card);
+    border: 1px solid rgba(41,82,196,0.2);
+    border-radius: 12px;
+    padding: 40px 32px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    user-select: none;
+  }
+  .center-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(41,82,196,0.06), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .center-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(41,82,196,0.25);
+    border-color: rgba(41,82,196,0.5);
+  }
+  .center-card:hover::before { opacity: 1; }
+  .center-card.active {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 1px var(--primary-light), 0 20px 60px rgba(41,82,196,0.3);
+  }
+  /* 点击提示 */
+  .center-card .click-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+  .center-card:hover .click-hint {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-light);
+  }
+  /* 左右箭头 — 通用 */
+  .scroll-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(8,15,38,0.9);
+    border: 1px solid rgba(41,82,196,0.35);
+    color: #4a8fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    font-size: 18px;
+    transition: all 0.25s;
+    backdrop-filter: blur(8px);
+  }
+  .scroll-arrow:hover {
+    background: rgba(41,82,196,0.2);
+    border-color: var(--primary-light);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(41,82,196,0.4);
+  }
+  .scroll-arrow.left { left: 0; }
+  .scroll-arrow.right { right: 0; }
+  .scroll-arrow.hidden { opacity: 0; pointer-events: none; }
+  .card-icon {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    font-size: 26px;
+    position: relative;
+  }
+  .card-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 14px;
+    border: 1px solid;
+    border-color: inherit;
+    opacity: 0.4;
+  }
+  .icon-flow { background: rgba(41,82,196,0.15); border-color: #2952c4; color: #4a8fff; }
+  .icon-edu { background: rgba(41,196,130,0.12); border-color: #29c482; color: #29c482; }
+  .icon-rd { background: rgba(184,144,42,0.15); border-color: #b8902a; color: var(--accent-light); }
+  .icon-mkt { background: rgba(196,41,130,0.12); border-color: #c42982; color: #e04db0; }
+  .icon-service { background: rgba(41,196,196,0.12); border-color: #29c4c4; color: #29d4d4; }
+  .icon-storage { background: rgba(255,140,60,0.12); border-color: #ff8c3c; color: #ff9d5c; }
+  .icon-direct { background: rgba(138,43,226,0.12); border-color: #8b2be2; color: #a855f7; }
+  .icon-design { background: rgba(236,72,153,0.12); border-color: #ec4899; color: #f472b6; }
+  .card-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .tag {
+    padding: 4px 12px;
+    background: rgba(41,82,196,0.12);
+    border: 1px solid rgba(41,82,196,0.3);
+    border-radius: 20px;
+    font-size: 12px;
+    color: #7aa8e8;
+    transition: all 0.2s;
+  }
+  .center-card:hover .tag {
+    background: rgba(41,82,196,0.2);
+    border-color: rgba(41,82,196,0.5);
+  }
+  .card-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .card-corner {
+    position: absolute;
+    bottom: -12px; right: -12px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    opacity: 0.08;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .center-card:hover .card-corner { opacity: 0.15; transform: scale(1.3); }
+
+  /* 点击查看详情提示 - 每个卡片底部 */
+  .center-card .click-hint {
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.15);
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    opacity: 0;
+    transform: translateX(8px);
+    transition: all 0.35s;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .center-card:hover .click-hint {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--accent-light);
+  }
+
+  /* 案例Tab点击提示 */
+  .cases-tabs .case-tab {
+    position: relative;
+  }
+  .cases-tabs .case-tab:not(.active)::after {
+    content: '点击查看';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 1px;
+    opacity: 0;
+    transition: all 0.25s;
+    white-space: nowrap;
+  }
+  .cases-tabs .case-tab:not(.active):hover::after {
+    opacity: 1;
+    color: var(--accent-light);
+    bottom: -18px;
+  }
+  .case-tab.active {
+    cursor: default;
+  }
+
+  /* ── CASES 解决项目 ── */
+  #cases {
+    padding: 100px 48px;
+    background: rgba(8,15,38,0.5);
+  }
+  .cases-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+  .cases-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+  .cases-tabs::-webkit-scrollbar { display: none; }
+  .case-tab {
+    padding: 10px 24px;
+    background: rgba(13,24,53,0.8);
+    border: 1px solid rgba(41,82,196,0.2);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 1px;
+  }
+  .case-tab:hover {
+    background: rgba(41,82,196,0.15);
+    border-color: rgba(41,82,196,0.45);
+    color: #fff;
+  }
+  .case-tab.active {
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    border-color: var(--primary-light);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(41,82,196,0.5);
+  }
+  .case-display {
+    position: relative;
+    min-height: 400px;
+  }
+  .case-panel {
+    display: none;
+    animation: fadeInUp 0.5s ease;
+  }
+  .case-panel.active { display: block; }
+  .case-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .case-visual {
+    position: relative;
+    height: 360px;
+    background: var(--bg-card);
+    border: 1px solid rgba(41,82,196,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .case-visual-inner {
+    text-align: center;
+  }
+  .case-icon-big {
+    font-size: 80px;
+    line-height: 1;
+    margin-bottom: 16px;
+    filter: drop-shadow(0 0 20px rgba(41,82,196,0.5));
+  }
+  .case-visual-label {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .case-visual-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  /* Scan line effect */
+  .case-visual::after {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(41,82,196,0.8), transparent);
+    animation: scanLine 3s linear infinite;
+  }
+  @keyframes scanLine {
+    0% { top: -5%; }
+    100% { top: 105%; }
+  }
+  .case-info h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .case-info p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 24px;
+  }
+  .case-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .case-step {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: rgba(13,24,53,0.8);
+    border-left: 3px solid var(--primary-light);
+    border-radius: 0 6px 6px 0;
+    transition: background 0.2s;
+  }
+  .case-step:hover { background: rgba(41,82,196,0.12); }
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(41,82,196,0.2);
+    border: 1px solid var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+    color: #4a8fff;
+  }
+  .step-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ── FINAL CTA ── */
+  #cta {
+    padding: 140px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-glow-left {
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(41,82,196,0.12) 0%, transparent 70%);
+    top: 50%; left: 10%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .cta-glow-right {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,144,42,0.1) 0%, transparent 70%);
+    top: 50%; right: 5%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .cta-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .cta-headline {
+    font-size: clamp(28px, 4vw, 54px);
+    font-weight: 700;
+    line-height: 1.35;
+    max-width: 720px;
+    margin: 0 auto 16px;
+  }
+  .cta-headline .gradient-text {
+    background: linear-gradient(135deg, #4a8fff 30%, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta-sub {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 48px;
+    letter-spacing: 1px;
+  }
+  .cta-divider {
+    width: 1px; height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--primary-light), transparent);
+    margin: 0 auto 48px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid rgba(41,82,196,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    background: rgba(4,9,26,0.9);
+    position: relative;
+    z-index: 1;
+  }
+  .footer-logo img {
+    height: 36px;
+    opacity: 0.9;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 1px;
+  }
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+  }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--text-light); }
+
+  /* ── Animations ── */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── 流光边框 ── */
+  .glow-border {
+    position: relative;
+  }
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent-light), var(--primary-light));
+    background-size: 200% 100%;
+    animation: borderFlow 3s linear infinite;
+    z-index: -1;
+    padding: 1px;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  @keyframes borderFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+
+  /* ── 悬浮粒子 ── */
+  .float-particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(-400px) translateX(30px); opacity: 0; }
+  }
+
+  /* ── 手机端响应式 ── */
+  @media (max-width: 768px) {
+    nav {
+      padding: 0 16px;
+      height: 60px;
+    }
+    .nav-logo img { height: 32px; }
+    .nav-logo span { display: none; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; letter-spacing: 0; }
+
+    #hero { min-height: 100vh; padding: 100px 16px 80px; }
+    .hero-logo-wrap img { width: 130px; }
+    .hero-title { font-size: 26px; }
+    .hero-sub { font-size: 14px; }
+    .hero-cta { flex-direction: column; gap: 12px; width: 100%; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 14px 20px; font-size: 14px; }
+
+    #stats { padding: 40px 16px; }
+    .stats-grid { gap: 8px; }
+    .stat-item { min-width: 100px; padding: 16px 8px; }
+    .stat-item::after { top: 10%; bottom: 10%; }
+    .stat-num { font-size: 28px; }
+    .stat-label { font-size: 11px; letter-spacing: 1px; }
+
+    #centers { padding: 60px 16px; }
+    .scroll-arrow { display: none; }
+    .center-card { flex: 0 0 270px; padding: 28px 20px; }
+    .card-title { font-size: 20px; }
+    .card-desc { font-size: 13px; }
+
+    #cases { padding: 60px 16px; }
+    .cases-tabs { gap: 6px; }
+    .case-tab { padding: 8px 14px; font-size: 12px; }
+    .case-content-grid { grid-template-columns: 1fr; gap: 20px; }
+    .case-visual { height: 240px; }
+    .case-info h3 { font-size: 22px; }
+    .case-info p { font-size: 13px; }
+    .case-step { padding: 10px 14px; }
+    .step-text { font-size: 12px; }
+
+    #cta { padding: 80px 16px; }
+    .cta-headline { font-size: 24px; }
+
+    footer { padding: 24px 16px; flex-direction: column; text-align: center; }
+    .footer-copy { font-size: 11px; }
+  }
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+    z-index: 999;
+    transition: width 0.1s;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<canvas id="particles-canvas"></canvas>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <img src="logo.png" alt="邦豆品牌 专业祛痘加盟" onerror="this.style.display='none';this.nextSibling.style.display='inline'"><span style="display:none;font-size:22px;font-weight:900;color:#1a3a8f;letter-spacing:2px;">BAN·DO</span>
+    <span>BAN · DO &nbsp;邦豆</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#hero">首页</a></li>
+    <li><a href="#stats">品牌</a></li>
+    <li><a href="#centers">八大中心</a></li>
+    <li><a href="#cases">解决项目</a></li>
+    <li><a href="#cta">关于我们</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+
+  <!-- float particles -->
+  <div class="float-particle" style="width:6px;height:6px;background:rgba(41,82,196,0.6);left:15%;bottom:20%;animation-duration:8s;animation-delay:0s;"></div>
+  <div class="float-particle" style="width:4px;height:4px;background:rgba(184,144,42,0.5);left:25%;bottom:15%;animation-duration:11s;animation-delay:2s;"></div>
+  <div class="float-particle" style="width:8px;height:8px;background:rgba(41,82,196,0.4);right:20%;bottom:25%;animation-duration:9s;animation-delay:1s;"></div>
+  <div class="float-particle" style="width:5px;height:5px;background:rgba(74,143,255,0.5);right:35%;bottom:10%;animation-duration:12s;animation-delay:3s;"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">PROFESSIONAL SKIN CARE</div>
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="邦豆专业祛痘 BAN·DO品牌官网" onerror="this.style.display='none';this.nextSibling.style.display='block'"><div style="display:none;font-size:48px;font-weight:900;color:#1a3a8f;letter-spacing:4px;filter:drop-shadow(0 0 24px rgba(41,82,196,0.9));">BAN·DO</div>
+    </div>
+    <h1 class="hero-title">
+      专注 <span class="highlight">面部问题肌肤</span><br>
+      专业修护，还你本真美肌
+    </h1>
+    <p class="hero-sub">科学配方 · 深层修护 · 问题肌专家</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#cases">查看解决项目</a>
+      <a class="btn-outline" href="#centers">了解八大中心</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="18">0</div>
+      <div class="stat-label">年专注问题肌</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="100" data-unit="万" data-suffix="+">0</div>
+      <div class="stat-label">成功修护案例</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="10">0</div>
+      <div class="stat-label">大管理类型</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="8">0</div>
+      <div class="stat-label">大专业中心</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="99">0</div>
+      <div class="stat-label">客户满意度 %</div>
+    </div>
+  </div>
+</section>
+
+<!-- 八大中心 CENTERS -->
+<section id="centers">
+  <div class="section-header reveal">
+    <div class="section-tag">EIGHT CENTERS</div>
+    <h2 class="section-title">八大中心 · 全链路赋能</h2>
+    <p class="section-desc">从流量获客、科研创新、仓储物流到市场运营、设计品牌，完整的产业生态驱动品牌持续进化</p>
+  </div>
+  <div class="centers-scroll-wrapper">
+    <div class="scroll-arrow left hidden" id="scrollLeft" onclick="scrollCenters(-1)">◂</div>
+    <div class="scroll-arrow right" id="scrollRight" onclick="scrollCenters(1)">▸</div>
+  <div class="centers-grid" id="centersGrid">
+
+    <div class="center-card glow-border reveal" id="card-flow">
+      <div class="card-icon icon-flow">📊</div>
+      <div class="card-label">TRAFFIC CENTER</div>
+      <div class="card-title">流量中心</div>
+      <div class="card-tags">
+        <span class="tag">自营</span>
+        <span class="tag">稳定</span>
+        <span class="tag">重帮扶</span>
+      </div>
+      <p class="card-desc">自营流量闭环，稳定精准触达，全程帮扶赋能，让每一个加盟伙伴的获客之路畅通无阻，构建可持续增长的流量生态。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #2952c4, transparent); color: #2952c4; border-color: #2952c4;"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-edu">
+      <div class="card-icon icon-edu">🎓</div>
+      <div class="card-label">EDUCATION CENTER</div>
+      <div class="card-title">教育中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(41,196,130,0.3);color:#29c482;background:rgba(41,196,130,0.08);">专业</span>
+        <span class="tag" style="border-color:rgba(41,196,130,0.3);color:#29c482;background:rgba(41,196,130,0.08);">专注</span>
+        <span class="tag" style="border-color:rgba(41,196,130,0.3);color:#29c482;background:rgba(41,196,130,0.08);">重培训</span>
+      </div>
+      <p class="card-desc">系统化专业培训体系，聚焦问题肌护理核心技能，打造精通皮肤管理的专业人才，每一位从业者都能掌握科学护肤真谛。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #29c482, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-rd">
+      <div class="card-icon icon-rd">🔬</div>
+      <div class="card-label">R&D CENTER</div>
+      <div class="card-title">研发中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(184,144,42,0.3);color:#d4a93a;background:rgba(184,144,42,0.08);">安全</span>
+        <span class="tag" style="border-color:rgba(184,144,42,0.3);color:#d4a93a;background:rgba(184,144,42,0.08);">有效</span>
+        <span class="tag" style="border-color:rgba(184,144,42,0.3);color:#d4a93a;background:rgba(184,144,42,0.08);">重创新</span>
+      </div>
+      <p class="card-desc">以安全为底线，以有效为标准，持续创新配方与工艺，以科学研究驱动产品升级，让每一滴精华都经得起检验。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #b8902a, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-mkt">
+      <div class="card-icon icon-mkt">📣</div>
+      <div class="card-label">MARKET CENTER</div>
+      <div class="card-title">市场中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(196,41,130,0.3);color:#e04db0;background:rgba(196,41,130,0.08);">品宣</span>
+        <span class="tag" style="border-color:rgba(196,41,130,0.3);color:#e04db0;background:rgba(196,41,130,0.08);">开发</span>
+        <span class="tag" style="border-color:rgba(196,41,130,0.3);color:#e04db0;background:rgba(196,41,130,0.08);">重客勤</span>
+      </div>
+      <p class="card-desc">全面品牌宣传推广，积极市场开发拓展，重视客户关系维护，打通从品牌认知到客户忠诚的完整营销链路。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #c42982, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-service">
+      <div class="card-icon icon-service">🛡️</div>
+      <div class="card-label">AFTER-SALES CENTER</div>
+      <div class="card-title">售后中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(41,196,196,0.3);color:#29d4d4;background:rgba(41,196,196,0.08);">认真</span>
+        <span class="tag" style="border-color:rgba(41,196,196,0.3);color:#29d4d4;background:rgba(41,196,196,0.08);">负责</span>
+        <span class="tag" style="border-color:rgba(41,196,196,0.3);color:#29d4d4;background:rgba(41,196,196,0.08);">重响应</span>
+      </div>
+      <p class="card-desc">以认真态度对待每一次服务，对每一个订单负责到底，快速响应售后需求，以专业服务温度守护每一位客户的信赖与满意。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #29c4c4, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-storage">
+      <div class="card-icon icon-storage">📦</div>
+      <div class="card-label">WAREHOUSE CENTER</div>
+      <div class="card-title">仓储中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(255,140,60,0.3);color:#ff9d5c;background:rgba(255,140,60,0.08);">快速</span>
+        <span class="tag" style="border-color:rgba(255,140,60,0.3);color:#ff9d5c;background:rgba(255,140,60,0.08);">严谨</span>
+        <span class="tag" style="border-color:rgba(255,140,60,0.3);color:#ff9d5c;background:rgba(255,140,60,0.08);">0失误</span>
+      </div>
+      <p class="card-desc">现代化智能仓储体系，快速出库高效配送，严谨把控每一个出入库环节，以零失误标准确保产品安全、精准地到达每一位客户手中。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #ff8c3c, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-direct">
+      <div class="card-icon icon-direct">🏬</div>
+      <div class="card-label">DIRECT CENTER</div>
+      <div class="card-title">直营中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(138,43,226,0.3);color:#a855f7;background:rgba(138,43,226,0.08);">运营</span>
+        <span class="tag" style="border-color:rgba(138,43,226,0.3);color:#a855f7;background:rgba(138,43,226,0.08);">测品</span>
+        <span class="tag" style="border-color:rgba(138,43,226,0.3);color:#a855f7;background:rgba(138,43,226,0.08);">助市场</span>
+      </div>
+      <p class="card-desc">直营门店矩阵运营，深度测试产品与模式，不断沉淀可复制的成功经验，用一线实战成果助力加盟市场快速拓展与业绩增长。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #8b2be2, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+    <div class="center-card reveal" id="card-design">
+      <div class="card-icon icon-design">🎨</div>
+      <div class="card-label">DESIGN CENTER</div>
+      <div class="card-title">设计中心</div>
+      <div class="card-tags">
+        <span class="tag" style="border-color:rgba(236,72,153,0.3);color:#f472b6;background:rgba(236,72,153,0.08);">美感</span>
+        <span class="tag" style="border-color:rgba(236,72,153,0.3);color:#f472b6;background:rgba(236,72,153,0.08);">统一</span>
+        <span class="tag" style="border-color:rgba(236,72,153,0.3);color:#f472b6;background:rgba(236,72,153,0.08);">品牌化</span>
+      </div>
+      <p class="card-desc">以高级美感驱动品牌视觉体系，统一门店形象与物料标准，构建辨识度鲜明的品牌视觉资产，让每个触点都传递一致的品牌力量。</p>
+      <div class="card-corner" style="background: radial-gradient(circle, #ec4899, transparent);"></div>
+      <div class="click-hint">查看详情 ▸</div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+<!-- 解决项目 CASES -->
+<section id="cases">
+  <div class="cases-inner">
+    <div class="section-header reveal">
+      <div class="section-tag">SKIN SOLUTIONS</div>
+      <h2 class="section-title">解决项目 · 见证蜕变</h2>
+      <p class="section-desc">十大问题肌管理方案，专业团队量身制定，科学配方逐步焕新</p>
+    </div>
+
+    <div class="cases-tabs reveal">
+      <button class="case-tab active" onclick="showCase('acne')">痘肌管理</button>
+      <button class="case-tab" onclick="showCase('pore-scar')">痘坑管理</button>
+      <button class="case-tab" onclick="showCase('acne-mark')">痘印管理</button>
+      <button class="case-tab" onclick="showCase('sensitive')">敏感肌管理</button>
+      <button class="case-tab" onclick="showCase('hormone')">激素脸管理</button>
+      <button class="case-tab" onclick="showCase('pores')">毛孔粗大管理</button>
+      <button class="case-tab" onclick="showCase('spot')">淡斑管理</button>
+      <button class="case-tab" onclick="showCase('bright')">净白管理</button>
+      <button class="case-tab" onclick="showCase('moisture')">水润管理</button>
+      <button class="case-tab" onclick="showCase('firm')">紧致管理</button>
+    </div>
+
+    <div class="case-display">
+
+      <div class="case-panel active" id="case-acne">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🌿</div>
+              <div class="case-visual-label">痘肌管理方案</div>
+              <div class="case-visual-sub">ACNE MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>痘肌管理 · 从根源阻断</h3>
+            <p>针对寻常性痤疮、闭口粉刺、脓疱型痘痘等多种形态，邦豆通过皮脂腺调节、菌群平衡、角质疏通三大维度，制定个性化管理方案，帮助肌肤恢复洁净状态。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">皮肤检测分析，精准识别痘肌类型与诱因</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">深层清洁疏通，安全排出堵塞毛孔废物</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">专效修护配方，抑菌消炎平衡皮脂分泌</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">巩固肤屏修护，建立肌肤长效防御机制</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-pore-scar">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">💎</div>
+              <div class="case-visual-label">痘坑管理方案</div>
+              <div class="case-visual-sub">SCAR MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>痘坑管理 · 重塑平滑肌理</h3>
+            <p>冰锥型、滚轮型、箱车型…各类痘坑形态不同，邦豆研发专项填充修复配方，激活胶原再生，配合科学护理方案，逐步填平凹陷，重现光滑平整肤质。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">3D肌肤成像分析，精确评估痘坑深度类型</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">活性胶原导入，刺激真皮层新生修复</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">凹陷填充专方，逐步提升肌肤饱满度</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">定期跟踪复查，持续巩固管理成果</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-acne-mark">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">✨</div>
+              <div class="case-visual-label">痘印管理方案</div>
+              <div class="case-visual-sub">MARK MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>痘印管理 · 褪红消黑</h3>
+            <p>红色痘印、黑色素沉淀各有成因，邦豆针对不同类型的痘印制定专属方案，通过促进细胞代谢、阻断色素合成、提亮修护三步走，让肤色逐渐均匀透亮。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">辨别痘印类型，区分红印与黑色素沉积</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">促进角质代谢，加速色素自然脱落</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">专效美白精华，阻断黑色素持续合成</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">光感提亮养护，统一肤色增强透明感</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-sensitive">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🌸</div>
+              <div class="case-visual-label">敏感肌管理方案</div>
+              <div class="case-visual-sub">SENSITIVE MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>敏感肌管理 · 重建肤屏</h3>
+            <p>红血丝、频繁泛红、刺痛灼热感…敏感肌根本在于皮肤屏障受损。邦豆以温和为首要原则，通过舒缓、修护、强化屏障三步骤，帮助肌肤重建稳定防线。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">排查敏感诱因，制定个性化脱敏方案</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">温和舒缓精华，即时镇静泛红与刺激</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">屏障修护因子，重建脂质防护层结构</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">日常护肤指导，建立耐受健康肌肤习惯</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-hormone">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🧬</div>
+              <div class="case-visual-label">激素脸管理方案</div>
+              <div class="case-visual-sub">HORMONE MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>激素脸管理 · 科学脱激</h3>
+            <p>激素依赖性皮炎需要科学、渐进的修护方案。邦豆专业团队制定系统性脱激计划，配合屏障修护配方，帮助肌肤平稳度过戒断期，逐步恢复正常状态。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">专业评估激素损伤程度，制定脱激路径</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">温和替代方案，平缓过渡减少撤断反应</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">抗炎修护配方，控制戒断期炎症反应</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">全程专业跟进，阶段性复查调整方案</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-pores">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🔍</div>
+              <div class="case-visual-label">毛孔粗大管理方案</div>
+              <div class="case-visual-sub">PORE MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>毛孔粗大管理 · 收细净化</h3>
+            <p>皮脂分泌旺盛、角质堆积、胶原流失是毛孔粗大三大元凶。邦豆通过深层疏通、抑油控脂、紧致收缩三维打法，让毛孔逐步隐形，肤质更细腻。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">皮肤油脂检测，分析毛孔粗大根本原因</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">深层清洁疏通，溶解角栓及油脂堵塞</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">控油收缩精华，调节皮脂腺分泌节律</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">紧致胶原养护，从根本改善毛孔外观</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-spot">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🌙</div>
+              <div class="case-visual-label">淡斑管理方案</div>
+              <div class="case-visual-sub">SPOT MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>淡斑管理 · 均匀净透</h3>
+            <p>黄褐斑、雀斑、晒斑、老年斑各有成因。邦豆通过精准靶向色素源，结合酪氨酸酶抑制、细胞代谢加速、防护强化三大策略，让肌肤斑点逐步淡化消退。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">色斑类型鉴别，明确色素来源与深度</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">靶向美白精华，从源头阻断色素合成</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">代谢加速护理，促进色素自然代谢脱落</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">严格防护指导，防止色斑反复与加深</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-bright">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">💫</div>
+              <div class="case-visual-label">净白管理方案</div>
+              <div class="case-visual-sub">BRIGHTENING MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>净白管理 · 光感透亮</h3>
+            <p>暗沉、肤色不均、缺乏光泽感…邦豆净白方案通过多靶点美白机制，结合内外兼顾的光感护理，让肌肤呈现由内而外的透亮与均匀，焕发天然光泽。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">肤色检测分析，评估暗沉类型与程度</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">多靶点美白配方，全面提亮肤色基调</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">光感透亮精华，增强肌肤折光与通透感</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">长效保湿养护，维持肌肤饱满水润光泽</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-moisture">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">💧</div>
+              <div class="case-visual-label">水润管理方案</div>
+              <div class="case-visual-sub">HYDRATION MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>水润管理 · 深层补水锁水</h3>
+            <p>干燥紧绷、细纹初现、屏障薄弱…水分流失是肌肤老化的隐形推手。邦豆水润管理方案通过多层次补水策略，从角质层到真皮层全面锁水，持久维持肌肤水分平衡。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">皮肤水分检测，精准评估缺水程度与类型</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">深层补水精华，多分子玻尿酸梯度渗透</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">锁水屏障修护，构建肌肤天然保湿膜</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">长效保湿方案，维持日常水油平衡状态</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-panel" id="case-firm">
+        <div class="case-content-grid">
+          <div class="case-visual">
+            <div class="case-visual-inner">
+              <div class="case-icon-big">🌟</div>
+              <div class="case-visual-label">紧致管理方案</div>
+              <div class="case-visual-sub">FIRMING MANAGEMENT</div>
+            </div>
+          </div>
+          <div class="case-info">
+            <h3>紧致管理 · 焕活胶原弹力</h3>
+            <p>松弛下垂、法令纹、轮廓模糊…胶原蛋白流失是皮肤松弛的核心原因。邦豆紧致管理方案激活成纤维细胞，促进胶原再生，从深层重塑紧致饱满的年轻轮廓。</p>
+            <div class="case-steps">
+              <div class="case-step"><div class="step-num">01</div><div class="step-text">弹力测试评估，分析松弛程度与部位</div></div>
+              <div class="case-step"><div class="step-num">02</div><div class="step-text">胶原激活精华，深层刺激成纤维细胞再生</div></div>
+              <div class="case-step"><div class="step-num">03</div><div class="step-text">提拉紧致按摩，促进淋巴循环改善轮廓</div></div>
+              <div class="case-step"><div class="step-num">04</div><div class="step-text">抗氧防老护理，延缓皮肤弹性流失速度</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta">
+  <div class="cta-glow-left"></div>
+  <div class="cta-glow-right"></div>
+  <div class="cta-label">ARE YOU READY</div>
+  <h2 class="cta-headline reveal">
+    准备好唤醒<br>
+    <span class="gradient-text">你本来就很美</span>的肌肤了吗？
+  </h2>
+  <p class="cta-sub reveal">邦豆与你同行，科学护肤，做回本来最美的自己</p>
+  <div class="cta-divider"></div>
+  <div class="hero-cta reveal">
+    <a class="btn-primary" href="#cases">立即探索方案</a>
+    <a class="btn-outline" href="#centers">八大中心了解</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo.png" alt="专业祛痘加盟首选 邦豆BAN·DO" onerror="this.style.display='none';this.nextSibling.style.display='inline'"><span style="display:none;font-size:18px;font-weight:900;color:#1a3a8f;opacity:0.7;">BAN·DO 邦豆</span>
+  </div>
+  <div class="footer-copy">© 2024 BAN·DO 邦豆 · 专注面部问题肌肤修护 · 18年专业品牌</div>
+  <div class="footer-links">
+    <a href="#">关于邦豆</a>
+    <a href="#">加盟合作</a>
+    <a href="#">联系我们</a>
+  </div>
+</footer>
+
+<script>
+// ── 粒子系统 ──
+const canvas = document.getElementById('particles-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let W, H;
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+function Particle() {
+  this.x = Math.random() * W;
+  this.y = Math.random() * H;
+  this.vx = (Math.random() - 0.5) * 0.4;
+  this.vy = (Math.random() - 0.5) * 0.4;
+  this.r = Math.random() * 1.5 + 0.5;
+  this.alpha = Math.random() * 0.5 + 0.1;
+  this.color = Math.random() > 0.7 ? '#b8902a' : '#2952c4';
+}
+
+for (let i = 0; i < 120; i++) particles.push(new Particle());
+
+function drawParticles() {
+  ctx.clearRect(0, 0, W, H);
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W;
+    if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H;
+    if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = p.color;
+    ctx.globalAlpha = p.alpha;
+    ctx.fill();
+    // draw lines
+    for (let j = i + 1; j < particles.length; j++) {
+      const q = particles[j];
+      const dx = p.x - q.x, dy = p.y - q.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 100) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = '#2952c4';
+        ctx.globalAlpha = (1 - dist / 100) * 0.12;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// ── 导航滚动 ──
+const nav = document.getElementById('mainNav');
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+});
+
+// ── 滚动显现 ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // stagger children
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// ── 数字计数 ──
+function animateCount(el, target) {
+  const suffix = el.dataset.suffix || '';
+  const unit = el.dataset.unit || '';
+  let start = 0;
+  const dur = 2000;
+  const step = (timestamp) => {
+    if (!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / dur, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const val = Math.round(eased * target);
+    el.textContent = val.toLocaleString() + unit;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = target.toLocaleString() + unit + suffix;
+  };
+  requestAnimationFrame(step);
+}
+const statsObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const nums = e.target.querySelectorAll('[data-target]');
+      nums.forEach(n => animateCount(n, +n.dataset.target));
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.stats-grid').forEach(el => statsObs.observe(el));
+
+// ── 案例切换 ──
+function showCase(id) {
+  document.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.case-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('case-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── 八大中心滚轮滑动 ──
+function scrollCenters(direction) {
+  const grid = document.getElementById('centersGrid');
+  const scrollAmount = 340; // card width + gap
+  grid.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+}
+// 更新箭头可见性
+const centersGrid = document.getElementById('centersGrid');
+if (centersGrid) {
+  centersGrid.addEventListener('scroll', () => {
+    const left = centersGrid.scrollLeft;
+    const maxScroll = centersGrid.scrollWidth - centersGrid.clientWidth;
+    document.getElementById('scrollLeft').classList.toggle('hidden', left <= 10);
+    document.getElementById('scrollRight').classList.toggle('hidden', left >= maxScroll - 10);
+  });
+  // 初始状态
+  setTimeout(() => {
+    document.getElementById('scrollLeft').classList.add('hidden');
+    if (centersGrid.scrollWidth <= centersGrid.clientWidth + 10) {
+      document.getElementById('scrollRight').classList.add('hidden');
+    }
+  }, 200);
+}
+
+// ── 鼠标视差 ──
+document.addEventListener('mousemove', (e) => {
+  const dx = (e.clientX / window.innerWidth - 0.5) * 20;
+  const dy = (e.clientY / window.innerHeight - 0.5) * 20;
+  const heroGlow = document.querySelector('.hero-glow');
+  if (heroGlow) heroGlow.style.transform = `translate(calc(-50% + ${dx}px), calc(-60% + ${dy}px))`;
+});
+</script>
+</body>
+</html>
