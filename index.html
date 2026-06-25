@@ -798,6 +798,159 @@
     margin: 0 auto 48px;
   }
 
+  /* ── 加盟讯息 ── */
+  #franchise {
+    padding: 100px 48px 120px;
+    position: relative;
+    z-index: 1;
+  }
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .section-headline {
+    text-align: center;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .section-headline .gradient-text {
+    background: linear-gradient(135deg, #4a8fff 30%, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .section-subhead {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 60px;
+  }
+  .franchise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .franchise-card {
+    background: var(--bg-card);
+    border: 1px solid rgba(41,82,196,0.15);
+    border-radius: 12px;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .franchise-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .franchise-card:hover::before { transform: scaleX(1); }
+  .franchise-card:hover {
+    border-color: rgba(41,82,196,0.4);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 32px rgba(41,82,196,0.08);
+  }
+  .franchise-num {
+    font-size: 56px;
+    font-weight: 900;
+    background: linear-gradient(135deg, rgba(41,82,196,0.2), rgba(184,144,42,0.12));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 20px;
+  }
+  .franchise-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.4;
+    color: var(--text-light);
+  }
+  .franchise-card p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.9;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .franchise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .franchise-tag {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(41,82,196,0.1);
+    border: 1px solid rgba(41,82,196,0.2);
+    color: #7aa5ff;
+    letter-spacing: 1px;
+  }
+  .franchise-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent-light);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: gap 0.3s, color 0.3s;
+  }
+  .franchise-link:hover { gap: 14px; color: #e0b840; }
+  .franchise-link::after {
+    content: '→';
+    font-size: 16px;
+    transition: transform 0.3s;
+  }
+  .franchise-link:hover::after { transform: translateX(3px); }
+
+  /* 另一个计划 预留入口 */
+  .franchise-reserved {
+    max-width: 1280px;
+    margin: 48px auto 0;
+    padding: 40px;
+    border: 2px dashed rgba(41,82,196,0.25);
+    border-radius: 12px;
+    text-align: center;
+    background: rgba(13,24,53,0.3);
+  }
+  .franchise-reserved-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .franchise-reserved h4 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-light);
+    margin-bottom: 8px;
+  }
+  .franchise-reserved p {
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+
   /* ── FOOTER ── */
   footer {
     padding: 40px 48px;
@@ -934,6 +1087,15 @@
     #cta { padding: 80px 16px; }
     .cta-headline { font-size: 24px; }
 
+    #franchise { padding: 60px 16px; }
+    .franchise-grid { grid-template-columns: 1fr; gap: 16px; }
+    .franchise-card { padding: 28px 22px; }
+    .franchise-num { font-size: 42px; }
+    .franchise-card h3 { font-size: 17px; }
+    .franchise-card p { font-size: 13px; }
+    .franchise-reserved { padding: 28px 20px; margin-top: 24px; }
+    .franchise-reserved h4 { font-size: 18px; }
+
     footer { padding: 24px 16px; flex-direction: column; text-align: center; }
     .footer-copy { font-size: 11px; }
   }
@@ -964,6 +1126,7 @@
     <li><a href="#stats">品牌</a></li>
     <li><a href="#centers">八大中心</a></li>
     <li><a href="#cases">解决项目</a></li>
+    <li><a href="#franchise">加盟讯息</a></li>
     <li><a href="#cta">关于我们</a></li>
   </ul>
 </nav>
@@ -1419,7 +1582,62 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- 加盟讯息 -->
+<section id="franchise">
+  <div class="section-tag reveal">FRANCHISE INFO</div>
+  <h2 class="section-headline reveal">
+    加盟<span class="gradient-text">讯息</span>
+  </h2>
+  <p class="section-subhead reveal">选对品牌，赢在起点 — 三篇干货带你读懂祛痘加盟</p>
+
+  <div class="franchise-grid">
+    <!-- 01 行业前景篇 -->
+    <div class="franchise-card reveal">
+      <div class="franchise-num">01</div>
+      <h3>行业前景篇：问题肌市场正在爆发</h3>
+      <p>中国问题肌肤人群已突破3亿，祛痘市场规模超千亿，年复合增长率达18.6%。痘痘不再是青春期烦恼，成人痤疮、反复痘、激素脸正催生庞大的专业修护刚需。看懂这组数据，你就知道为何现在入局正当其时。</p>
+      <div class="franchise-tags">
+        <span class="franchise-tag">千亿市场</span>
+        <span class="franchise-tag">刚需赛道</span>
+        <span class="franchise-tag">增长红利</span>
+      </div>
+      <a class="franchise-link" href="https://codebuddy.work/agents/share/HXAk2GRg05g8V25TzTimX3XdebtXd05RevQYyuxEVVEMyzLEONjFdw88UN087T3m?platform=workbuddy" target="_blank">阅读全文</a>
+    </div>
+
+    <!-- 02 品牌筛选篇 -->
+    <div class="franchise-card reveal">
+      <div class="franchise-num">02</div>
+      <h3>品牌筛选篇：7个硬指标帮你筛掉90%的坑</h3>
+      <p>祛痘加盟品牌成千上万，如何一眼看穿真假？从品牌成立年限、直营店数量、产品批号可查性、技术培训体系、售后支持力度等7个维度逐一拆解。读完这篇，你能独立判断任何品牌的靠谱程度。</p>
+      <div class="franchise-tags">
+        <span class="franchise-tag">避坑指南</span>
+        <span class="franchise-tag">7项标准</span>
+        <span class="franchise-tag">自主判断</span>
+      </div>
+      <a class="franchise-link" href="https://codebuddy.work/agents/share/JS8NIt5TeXZ5lMATrhoJEWYtO2900Y3kRZAZOBM8V7rrdsjOknT5thx_-frirXTF?platform=workbuddy" target="_blank">阅读全文</a>
+    </div>
+
+    <!-- 03 品牌介绍篇 -->
+    <div class="franchise-card reveal">
+      <div class="franchise-num">03</div>
+      <h3>品牌介绍篇：加盟邦豆之前请先读完这一篇</h3>
+      <p>邦豆是谁？为何能在问题肌领域扎根18年？100万+成功案例背后的底层逻辑是什么？八大中心如何为加盟商全链路赋能？一文带你走遍邦豆的过去、现在和未来。做决定前，你值得了解的一切都在这里。</p>
+      <div class="franchise-tags">
+        <span class="franchise-tag">18年品牌</span>
+        <span class="franchise-tag">百万案例</span>
+        <span class="franchise-tag">全链路</span>
+      </div>
+      <a class="franchise-link" href="https://codebuddy.work/agents/share/I7lNe1_1w4QpmNQu7g9RtsyhvqsP_WerPhD5sF2ajwsHWhPptduGmPLYwDx3X-QK?platform=workbuddy" target="_blank">阅读全文</a>
+    </div>
+  </div>
+
+  <!-- 另一个计划 预留入口 -->
+  <div class="franchise-reserved reveal">
+    <div class="franchise-reserved-label">COMING SOON</div>
+    <h4>加盟扶持计划</h4>
+    <p>专属加盟政策、开业扶持方案、区域保护计划即将上线，敬请期待</p>
+  </div>
+</section>
 <footer>
   <div class="footer-logo">
     <img src="logo.png" alt="专业祛痘加盟首选 邦豆BAN·DO" onerror="this.style.display='none';this.nextSibling.style.display='inline'"><span style="display:none;font-size:18px;font-weight:900;color:#1a3a8f;opacity:0.7;">BAN·DO 邦豆</span>
