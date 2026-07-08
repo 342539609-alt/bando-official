@@ -806,42 +806,172 @@
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
+    position: relative;
   }
+
+  .cta-contact-grid::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(41,82,196,0.15) 20%, rgba(41,82,196,0.15) 80%, transparent 100%);
+    pointer-events: none;
+  }
+
   .cta-contact-card {
-    background: var(--bg-card2);
-    border: 1px solid rgba(41,82,196,0.18);
-    border-radius: 12px;
-    padding: 22px 28px;
-    min-width: 240px;
+    background: linear-gradient(135deg, rgba(15,30,65,0.85) 0%, rgba(10,20,45,0.95) 100%);
+    border: 1px solid rgba(41,82,196,0.12);
+    border-radius: 14px;
+    padding: 28px 32px;
+    min-width: 260px;
     flex: 1;
     text-align: left;
-    transition: border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+    isolation: isolate;
   }
+
+  .cta-contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--primary-light) 50%, transparent 100%);
+    opacity: 0.3;
+    transition: opacity 0.4s;
+  }
+
+  .cta-contact-card:nth-child(1)::before {
+    background: linear-gradient(90deg, transparent 0%, var(--primary-light) 50%, transparent 100%);
+  }
+  .cta-contact-card:nth-child(2)::before {
+    background: linear-gradient(90deg, transparent 0%, var(--accent-light) 50%, transparent 100%);
+  }
+  .cta-contact-card:nth-child(3)::before {
+    background: linear-gradient(90deg, transparent 0%, #ff7a45 50%, transparent 100%);
+  }
+
+  .cta-contact-card:hover::before {
+    opacity: 0.8;
+  }
+
+  .cta-contact-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: -100%; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(74,143,255,0.4) 50%, transparent 100%);
+    animation: scanLine 4s linear infinite;
+  }
+
+  .cta-contact-card:nth-child(2)::after {
+    animation-delay: 1.3s;
+    background: linear-gradient(90deg, transparent 0%, rgba(184,144,42,0.4) 50%, transparent 100%);
+  }
+
+  .cta-contact-card:nth-child(3)::after {
+    animation-delay: 2.6s;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,122,69,0.4) 50%, transparent 100%);
+  }
+
+  @keyframes scanLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
   .cta-contact-card:hover {
-    border-color: rgba(41,82,196,0.4);
+    border-color: rgba(41,82,196,0.35);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 20px rgba(41,82,196,0.08);
   }
+
+  .cta-contact-card:hover::after {
+    animation-duration: 2s;
+  }
+
+  /* Card corner decorations */
+  .cta-contact-card .corner-tl, .cta-contact-card .corner-br {
+    position: absolute;
+    width: 16px; height: 16px;
+    pointer-events: none;
+  }
+  .cta-contact-card .corner-tl {
+    top: 6px; left: 6px;
+    border-top: 2px solid rgba(41,82,196,0.25);
+    border-left: 2px solid rgba(41,82,196,0.25);
+  }
+  .cta-contact-card .corner-br {
+    bottom: 6px; right: 6px;
+    border-bottom: 2px solid rgba(41,82,196,0.25);
+    border-right: 2px solid rgba(41,82,196,0.25);
+  }
+  .cta-contact-card:nth-child(2) .corner-tl {
+    border-color: rgba(184,144,42,0.25);
+  }
+  .cta-contact-card:nth-child(2) .corner-br {
+    border-color: rgba(184,144,42,0.25);
+  }
+  .cta-contact-card:nth-child(3) .corner-tl {
+    border-color: rgba(255,122,69,0.25);
+  }
+  .cta-contact-card:nth-child(3) .corner-br {
+    border-color: rgba(255,122,69,0.25);
+  }
+
   .cta-contact-card .contact-icon {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 40px; height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(41,82,196,0.08);
+    border: 1px solid rgba(41,82,196,0.15);
   }
+  .cta-contact-card:nth-child(2) .contact-icon {
+    background: rgba(184,144,42,0.08);
+    border-color: rgba(184,144,42,0.15);
+  }
+  .cta-contact-card:nth-child(3) .contact-icon {
+    background: rgba(255,122,69,0.08);
+    border-color: rgba(255,122,69,0.15);
+  }
+
   .cta-contact-card .contact-label {
-    font-size: 11px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 3px;
     color: var(--text-muted);
     text-transform: uppercase;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    font-weight: 500;
   }
   .cta-contact-card .contact-value {
     font-size: 15px;
     color: var(--text-light);
     font-weight: 500;
     line-height: 1.6;
+    letter-spacing: 0.5px;
   }
   .cta-contact-card .contact-phone {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
-    color: var(--accent-light);
+    background: linear-gradient(135deg, #ffd85e, #e8a830);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     letter-spacing: 1px;
+  }
+
+  /* Data line connector between cards */
+  .cta-contact-grid .connector-line {
+    position: absolute;
+    top: 50%; transform: translateY(-50%);
+    width: 20px; height: 1px;
+    background: linear-gradient(90deg, rgba(41,82,196,0.2), transparent);
+    z-index: -1;
   }
 
   /* ── 加盟讯息 ── */
@@ -1189,9 +1319,10 @@
 
     #cta { padding: 80px 16px; }
     .cta-headline { font-size: 24px; }
-    .cta-contact-grid { flex-direction: column; align-items: stretch; }
-    .cta-contact-card { text-align: center; }
-    .cta-contact-card .contact-phone { font-size: 20px; }
+    .cta-contact-grid { flex-direction: column; align-items: stretch; gap: 14px; padding: 0 8px; }
+    .cta-contact-card { min-width: auto; padding: 22px 24px; text-align: center; }
+    .cta-contact-card .contact-icon { margin: 0 auto 8px; }
+    .cta-contact-card .contact-phone { font-size: 22px; }
 
     #franchise { padding: 60px 16px; }
     .franchise-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1693,18 +1824,24 @@
 
   <div class="cta-contact-grid reveal">
     <div class="cta-contact-card">
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
       <div class="contact-icon">🏢</div>
-      <div class="contact-label">公司名称</div>
+      <div class="contact-label">COMPANY</div>
       <div class="contact-value">青岛翌盛和生物科技有限公司</div>
     </div>
     <div class="cta-contact-card">
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
       <div class="contact-icon">📍</div>
-      <div class="contact-label">公司地址</div>
+      <div class="contact-label">ADDRESS</div>
       <div class="contact-value">青岛市市北区长沙路保利天珺10层</div>
     </div>
     <div class="cta-contact-card">
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
       <div class="contact-icon">📞</div>
-      <div class="contact-label">咨询热线</div>
+      <div class="contact-label">HOTLINE</div>
       <div class="contact-value contact-phone">4008-707-686</div>
     </div>
   </div>
