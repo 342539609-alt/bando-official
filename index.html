@@ -798,6 +798,52 @@
     margin: 0 auto 48px;
   }
 
+  /* ── 关于我们 公司信息 ── */
+  .cta-contact-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .cta-contact-card {
+    background: var(--bg-card2);
+    border: 1px solid rgba(41,82,196,0.18);
+    border-radius: 12px;
+    padding: 22px 28px;
+    min-width: 240px;
+    flex: 1;
+    text-align: left;
+    transition: border-color 0.3s;
+  }
+  .cta-contact-card:hover {
+    border-color: rgba(41,82,196,0.4);
+  }
+  .cta-contact-card .contact-icon {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+  .cta-contact-card .contact-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cta-contact-card .contact-value {
+    font-size: 15px;
+    color: var(--text-light);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+  .cta-contact-card .contact-phone {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent-light);
+    letter-spacing: 1px;
+  }
+
   /* ── 加盟讯息 ── */
   #franchise {
     padding: 100px 48px 120px;
@@ -1143,6 +1189,9 @@
 
     #cta { padding: 80px 16px; }
     .cta-headline { font-size: 24px; }
+    .cta-contact-grid { flex-direction: column; align-items: stretch; }
+    .cta-contact-card { text-align: center; }
+    .cta-contact-card .contact-phone { font-size: 20px; }
 
     #franchise { padding: 60px 16px; }
     .franchise-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1640,6 +1689,24 @@
   <div class="hero-cta reveal">
     <a class="btn-primary" href="#cases">立即探索方案</a>
     <a class="btn-outline" href="#centers">八大中心了解</a>
+  </div>
+
+  <div class="cta-contact-grid reveal">
+    <div class="cta-contact-card">
+      <div class="contact-icon">🏢</div>
+      <div class="contact-label">公司名称</div>
+      <div class="contact-value">青岛翌盛和生物科技有限公司</div>
+    </div>
+    <div class="cta-contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">公司地址</div>
+      <div class="contact-value">青岛市市北区长沙路保利天珺10层</div>
+    </div>
+    <div class="cta-contact-card">
+      <div class="contact-icon">📞</div>
+      <div class="contact-label">咨询热线</div>
+      <div class="contact-value contact-phone">4008-707-686</div>
+    </div>
   </div>
 </section>
 
