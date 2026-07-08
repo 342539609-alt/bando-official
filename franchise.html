@@ -131,12 +131,13 @@
     background: var(--bg-card);
     border: 1px solid rgba(41,82,196,0.15);
     border-radius: 12px;
-    padding: 36px 30px;
+    padding: 32px 28px;
     display: flex;
     flex-direction: column;
     transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     position: relative;
     overflow: hidden;
+    min-height: 200px;
   }
   .franchise-card::before {
     content: '';
@@ -155,43 +156,21 @@
     box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 32px rgba(41,82,196,0.08);
   }
   .franchise-num {
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 900;
     background: linear-gradient(135deg, rgba(41,82,196,0.2), rgba(184,144,42,0.12));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
   .franchise-card h3 {
     font-size: 20px;
     font-weight: 700;
-    margin-bottom: 14px;
-    line-height: 1.4;
+    line-height: 1.5;
     color: var(--text-light);
-  }
-  .franchise-card p {
-    color: var(--text-muted);
-    font-size: 14px;
-    line-height: 1.9;
     flex: 1;
-    margin-bottom: 24px;
-  }
-  .franchise-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 24px;
-  }
-  .franchise-tag {
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: rgba(41,82,196,0.1);
-    border: 1px solid rgba(41,82,196,0.2);
-    color: #7aa5ff;
-    letter-spacing: 1px;
   }
   .franchise-link {
     display: inline-flex;
@@ -203,6 +182,8 @@
     text-decoration: none;
     letter-spacing: 1px;
     transition: gap 0.3s, color 0.3s;
+    margin-top: auto;
+    padding-top: 12px;
   }
   .franchise-link:hover { gap: 14px; color: #e0b840; }
   .franchise-link::after {
@@ -276,12 +257,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">01</div>
     <h3>行业前景篇：问题肌市场正在爆发</h3>
-    <p>中国问题肌肤人群已突破3亿，祛痘市场规模超千亿，年复合增长率达18.6%。痘痘不再是青春期烦恼，成人痤疮、反复痘、脆弱肌正催生庞大的专业管理刚需。看懂这组数据，你就知道为何现在入局正当其时。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">千亿市场</span>
-      <span class="franchise-tag">刚需赛道</span>
-      <span class="franchise-tag">增长红利</span>
-    </div>
     <a class="franchise-link" href="article-industry.html">阅读全文</a>
   </div>
 
@@ -289,12 +264,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">02</div>
     <h3>品牌筛选篇：7个硬指标帮你筛掉90%的坑</h3>
-    <p>祛痘加盟品牌成千上万，如何一眼看穿真假？从品牌成立年限、直营店数量、产品批号可查性、技术培训体系、售后支持力度等7个维度逐一拆解。读完这篇，你能独立判断任何品牌的靠谱程度。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">避坑指南</span>
-      <span class="franchise-tag">7项标准</span>
-      <span class="franchise-tag">自主判断</span>
-    </div>
     <a class="franchise-link" href="article-filter.html">阅读全文</a>
   </div>
 
@@ -302,12 +271,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">03</div>
     <h3>品牌介绍篇：加盟邦豆之前请先读完这一篇</h3>
-    <p>邦豆是谁？为何能在问题肌领域扎根18年？100万+成功案例背后的底层逻辑是什么？八大中心如何为加盟商全链路赋能？一文带你走遍邦豆的过去、现在和未来。做决定前，你值得了解的一切都在这里。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">18年品牌</span>
-      <span class="franchise-tag">百万案例</span>
-      <span class="franchise-tag">全链路</span>
-    </div>
     <a class="franchise-link" href="article-brand.html">阅读全文</a>
   </div>
 
@@ -315,12 +278,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">04</div>
     <h3>加盟费用篇：加盟邦豆到底要花多少钱？</h3>
-    <p>把一家标准邦豆加盟店的全部投入拆到每一项：加盟费花在哪、每月固定成本、真实回本周期。看完你可以拿着这份清单对比任何品牌——包括邦豆自己。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">30-50万</span>
-      <span class="franchise-tag">逐项拆解</span>
-      <span class="franchise-tag">14-18月回本</span>
-    </div>
     <a class="franchise-link" href="article-investment.html">阅读全文</a>
   </div>
 
@@ -328,12 +285,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">05</div>
     <h3>产品体系篇：邦豆6大产品线全景</h3>
-    <p>清痘线、净衡线、屏障调理线、焕亮线、控油线、舒缓线——6大产品线逐一拆解，告诉你每一种问题肌用什么产品、为什么这么用、分型方案怎么组合。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">6大产品线</span>
-      <span class="franchise-tag">分型管理</span>
-      <span class="franchise-tag">自研专利</span>
-    </div>
     <a class="franchise-link" href="article-products.html">阅读全文</a>
   </div>
 
@@ -341,12 +292,6 @@
   <div class="franchise-card reveal">
     <div class="franchise-num">06</div>
     <h3>开业日历篇：从签约到稳定盈利的12个月</h3>
-    <p>筹备期→生存期→爬坡期→成熟期，4个阶段12个月按月拆解。每个月的关键动作、常见坑、总部支持全部列清楚。建议打印出来贴墙上。</p>
-    <div class="franchise-tags">
-      <span class="franchise-tag">12个月规划</span>
-      <span class="franchise-tag">4大阶段</span>
-      <span class="franchise-tag">实操指南</span>
-    </div>
     <a class="franchise-link" href="article-calendar.html">阅读全文</a>
   </div>
 
