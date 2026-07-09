@@ -55,6 +55,13 @@
     .article-body p { font-size: 15px; }
     .article-body table { font-size: 13px; }
   }
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -69,10 +76,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">加盟FAQ</div>
+    <div class="article-tags">
+    <span class="article-tag">加盟答疑</span>
+    <span class="article-tag">常见问题</span>
+    <span class="article-tag">决策参考</span>
+    <span class="article-tag">总部支持</span>
+  </div>
     <h1>加盟FAQ篇：加盟邦豆前最常被问到的10个问题</h1>
     <p class="meta">邦豆品牌内容中心 &nbsp;|&nbsp; 2026年6月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-09.png" alt="发光问号置于对话气泡中，周围环绕聊天图标，象征加盟前常见问题答疑">
+    <figcaption>加盟邦豆前最常被问到的10个问题</figcaption>
+  </figure>
 
   <div class="article-body">
 <blockquote>

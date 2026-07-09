@@ -123,6 +123,13 @@
     .article-body p { font-size: 15px; }
     .data-block { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -137,10 +144,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">行业前景</div>
+    <div class="article-tags">
+    <span class="article-tag">问题肌市场</span>
+    <span class="article-tag">千亿赛道</span>
+    <span class="article-tag">刚需消费</span>
+    <span class="article-tag">增长红利</span>
+  </div>
     <h1>问题肌市场正在爆发 —<br>为什么现在入局祛痘行业正当其时？</h1>
     <p class="meta">邦豆品牌研究中心 &nbsp;|&nbsp; 2026年6月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-01.png" alt="问题肌市场规模数据可视化，蓝色光点组成的地图与上升柱状图，象征刚需赛道的增长红利">
+    <figcaption>问题肌市场正在爆发：规模、刚需与增长红利</figcaption>
+  </figure>
 
   <div class="article-body">
 

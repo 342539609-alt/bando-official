@@ -55,6 +55,13 @@
     .article-body p { font-size: 15px; }
     .article-body table { font-size: 13px; }
   }
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -69,10 +76,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">技术科普</div>
+    <div class="article-tags">
+    <span class="article-tag">护理SOP</span>
+    <span class="article-tag">11步流程</span>
+    <span class="article-tag">专业手法</span>
+    <span class="article-tag">标准服务</span>
+  </div>
     <h1>技术科普篇：邦豆祛痘护理SOP全拆解，11步到底在做什么</h1>
     <p class="meta">邦豆品牌内容中心 &nbsp;|&nbsp; 2026年6月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-08.png" alt="专业护理师双手在护理床上为客户做面部舒缓手法，柔光 spa 氛围，呈现标准服务流程">
+    <figcaption>邦豆祛痘护理SOP：11步到底在做什么</figcaption>
+  </figure>
 
   <div class="article-body">
 <blockquote>

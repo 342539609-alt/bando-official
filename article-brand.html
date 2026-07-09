@@ -137,6 +137,13 @@
     .article-body p { font-size: 15px; }
     .center-grid { grid-template-columns: 1fr 1fr; }
   }
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -151,10 +158,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">品牌介绍</div>
+    <div class="article-tags">
+    <span class="article-tag">品牌故事</span>
+    <span class="article-tag">18年沉淀</span>
+    <span class="article-tag">全链路赋能</span>
+    <span class="article-tag">百万案例</span>
+  </div>
     <h1>加盟邦豆之前 — 请先读完这一篇</h1>
     <p class="meta">邦豆品牌研究中心 &nbsp;|&nbsp; 2026年6月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-03.png" alt="黄昏中亮着暖光招牌的现代护肤门店外观，映出蓝金倒影，体现品牌长期沉淀">
+    <figcaption>邦豆是谁：18年专注问题肌赛道</figcaption>
+  </figure>
 
   <div class="article-body">
 

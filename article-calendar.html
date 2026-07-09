@@ -41,6 +41,13 @@
   .cta-box a:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(184,144,42,0.3)}
   .footer-nav{text-align:center;margin-top:40px;padding:30px 0;border-top:1px solid rgba(41,82,196,0.15)}.footer-nav a{color:var(--accent);text-decoration:none;font-size:15px}
   @media(max-width:768px){header{padding:0 20px}.article-container{padding:100px 16px 60px}.article-hero h1{font-size:26px}.article-body h2{font-size:22px}.article-body p{font-size:15px}.article-body table{font-size:12px}.article-body th,.article-body td{padding:8px 10px}.article-body pre{font-size:11px}}
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -55,10 +62,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">开业日历</div>
+    <div class="article-tags">
+    <span class="article-tag">12个月规划</span>
+    <span class="article-tag">4大阶段</span>
+    <span class="article-tag">开业筹备</span>
+    <span class="article-tag">实操指南</span>
+  </div>
     <h1>开业第一年完整日历：<br>从签约到稳定盈利的12个月</h1>
     <p class="meta">邦豆品牌研究中心 &nbsp;|&nbsp; 2026年7月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-06.png" alt="由十二个节点连成的环形时间线，蓝金光点象征开业第一年的四个阶段规划">
+    <figcaption>开业第一年12个月完整日历</figcaption>
+  </figure>
 
   <div class="article-body">
 

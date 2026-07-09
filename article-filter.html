@@ -120,6 +120,13 @@
     .article-body p { font-size: 15px; }
     .check-item h3 { font-size: 18px; }
   }
+
+  /* ── 文章标签 & 配图 ── */
+  .article-tags { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 18px; }
+  .article-tags .article-tag { margin-bottom: 0; }
+  .article-figure { margin: 6px 0 46px; text-align: center; }
+  .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
+  .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
 </style>
 </head>
 <body>
@@ -134,10 +141,20 @@
 
 <div class="article-container">
   <div class="article-hero">
-    <div class="article-tag">品牌筛选</div>
+    <div class="article-tags">
+    <span class="article-tag">品牌筛选</span>
+    <span class="article-tag">避坑指南</span>
+    <span class="article-tag">加盟决策</span>
+    <span class="article-tag">7项标准</span>
+  </div>
     <h1>7个硬指标 — 帮你筛掉90%的坑</h1>
     <p class="meta">邦豆品牌研究中心 &nbsp;|&nbsp; 2026年6月</p>
   </div>
+
+  <figure class="article-figure">
+    <img src="images/cover-02.png" alt="发光清单与放大镜检视盾牌图标，象征用硬指标筛选加盟品牌的避坑逻辑">
+    <figcaption>7个硬指标，帮你看懂品牌靠不靠谱</figcaption>
+  </figure>
 
   <div class="article-body">
 
