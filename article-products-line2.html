@@ -62,6 +62,63 @@
   .article-figure { margin: 6px 0 46px; text-align: center; }
   .article-figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 14px; border: 1px solid rgba(41,82,196,0.2); box-shadow: 0 14px 44px rgba(0,0,0,0.45); }
   .article-figure figcaption { margin-top: 13px; font-size: 13px; color: var(--text-muted); letter-spacing: 0.5px; }
+
+  /* ── 文章底部上一篇/下一篇导航 ── */
+  .article-nav {
+    display: flex;
+    align-items: stretch;
+    gap: 14px;
+    margin: 52px 0 12px;
+    flex-wrap: wrap;
+  }
+  .article-nav a {
+    flex: 1 1 200px;
+    text-decoration: none;
+    padding: 18px 22px;
+    border: 1px solid rgba(41,82,196,0.18);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(15,30,65,0.55), rgba(10,20,45,0.8));
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    transition: border-color .3s, transform .3s, box-shadow .3s;
+  }
+  .article-nav a:hover {
+    border-color: rgba(74,143,255,0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(41,82,196,0.12);
+  }
+  .article-nav .nav-home {
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--accent-light);
+    font-weight: 600;
+    border-color: rgba(184,144,42,0.25);
+    background: linear-gradient(135deg, rgba(184,144,42,0.08), rgba(10,20,45,0.8));
+  }
+  .article-nav .nav-home:hover { border-color: rgba(184,144,42,0.55); }
+  .article-nav .nav-label {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+  }
+  .article-nav .nav-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+  .article-nav .nav-prev .nav-label { color: #7aa5ff; }
+  .article-nav .nav-next { text-align: right; align-items: flex-end; }
+  .article-nav .nav-next .nav-label { color: #b8902a; }
+  .article-nav .nav-disabled {
+    opacity: .38;
+    pointer-events: none;
+    cursor: default;
+  }
+
 </style>
 </head>
 <body>
@@ -215,8 +272,10 @@
     <a href="franchise.html">查看全部加盟干货 →</a>
   </div>
 
-  <div class="footer-nav">
-    <a href="franchise.html">← 返回加盟讯息列表</a>
+    <div class="footer-nav article-nav">
+    <a class="nav-prev" href="article-products-line1.html"><span class="nav-label">← 上一篇</span><span class="nav-title">产品系列上篇</span></a>
+    <a class="nav-home" href="franchise.html">返回加盟讯息</a>
+    <a class="nav-next" href="article-products-line3.html"><span class="nav-label">下一篇 →</span><span class="nav-title">产品系列下篇</span></a>
   </div>
 </div>
 
