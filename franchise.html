@@ -72,7 +72,7 @@
 
   /* Hero */
   .page-hero {
-    padding: 80px 48px 60px;
+    padding: 80px 48px 50px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -113,91 +113,92 @@
     position: relative;
   }
   .hero-divider {
-    width: 1px; height: 60px;
+    width: 1px; height: 50px;
     background: linear-gradient(to bottom, transparent, var(--primary-light), transparent);
-    margin: 40px auto 0;
+    margin: 32px auto 0;
   }
 
-  /* Grid */
-  .franchise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1280px;
+  /* List */
+  .franchise-list {
+    max-width: 880px;
     margin: 0 auto;
-    padding: 0 48px 120px;
-  }
-  .franchise-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(41,82,196,0.15);
-    border-radius: 12px;
-    padding: 32px 28px;
+    padding: 0 48px 100px;
     display: flex;
     flex-direction: column;
-    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    gap: 10px;
+  }
+  .franchise-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 32px;
+    background: var(--bg-card);
+    border: 1px solid rgba(41,82,196,0.15);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s, background 0.35s;
     position: relative;
     overflow: hidden;
-    min-height: 200px;
   }
-  .franchise-card::before {
+  /* Left accent bar */
+  .franchise-item::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--primary-light), var(--accent-light));
+    transform: scaleY(0);
+    transition: transform 0.35s;
   }
-  .franchise-card:hover::before { transform: scaleX(1); }
-  .franchise-card:hover {
+  .franchise-item:hover::before { transform: scaleY(1); }
+  .franchise-item:hover {
     border-color: rgba(41,82,196,0.4);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 48px rgba(0,0,0,0.5), 0 0 32px rgba(41,82,196,0.08);
+    transform: translateX(6px);
+    background: var(--bg-card2);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 24px rgba(41,82,196,0.08);
   }
-  .franchise-num {
-    font-size: 48px;
+  .item-num {
+    font-size: 32px;
     font-weight: 900;
-    background: linear-gradient(135deg, rgba(41,82,196,0.2), rgba(184,144,42,0.12));
+    background: linear-gradient(135deg, rgba(41,82,196,0.35), rgba(184,144,42,0.2));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     line-height: 1;
-    margin-bottom: 12px;
+    min-width: 46px;
+    text-align: center;
+    transition: background 0.35s;
   }
-  .franchise-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 1.5;
-    color: var(--text-light);
+  .franchise-item:hover .item-num {
+    background: linear-gradient(135deg, #4a8fff, var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .item-title {
     flex: 1;
-  }
-  .franchise-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--accent-light);
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 1px;
-    transition: gap 0.3s, color 0.3s;
-    margin-top: auto;
-    padding-top: 12px;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    line-height: 1.5;
   }
-  .franchise-link:hover { gap: 14px; color: #e0b840; }
-  .franchise-link::after {
-    content: '→';
-    font-size: 16px;
-    transition: transform 0.3s;
+  .item-arrow {
+    color: var(--text-muted);
+    font-size: 18px;
+    transition: color 0.35s, transform 0.35s;
+    flex-shrink: 0;
   }
-  .franchise-link:hover::after { transform: translateX(3px); }
+  .franchise-item:hover .item-arrow {
+    color: var(--accent-light);
+    transform: translateX(4px);
+  }
 
   /* Reveal */
   .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
   }
   .reveal.visible {
     opacity: 1;
@@ -224,12 +225,11 @@
 
   @media(max-width:768px) {
     header { padding: 14px 20px; }
-    .page-hero { padding: 60px 20px 40px; }
-    .franchise-grid { grid-template-columns: 1fr; gap: 16px; padding: 0 20px 80px; }
-    .franchise-card { padding: 28px 22px; }
-    .franchise-num { font-size: 42px; }
-    .franchise-card h3 { font-size: 17px; }
-    .franchise-card p { font-size: 13px; }
+    .page-hero { padding: 60px 20px 36px; }
+    .franchise-list { padding: 0 20px 80px; gap: 8px; }
+    .franchise-item { padding: 18px 20px; gap: 16px; }
+    .item-num { font-size: 26px; min-width: 38px; }
+    .item-title { font-size: 15px; }
     footer { flex-direction: column; gap: 8px; text-align: center; padding: 24px 20px; }
   }
 </style>
@@ -251,49 +251,43 @@
   <div class="hero-divider"></div>
 </section>
 
-<div class="franchise-grid">
+<div class="franchise-list">
 
-  <!-- 01 行业前景篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">01</div>
-    <h3>行业前景篇：问题肌市场正在爆发</h3>
-    <a class="franchise-link" href="article-industry.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-industry.html">
+    <span class="item-num">01</span>
+    <span class="item-title">行业前景篇：问题肌市场正在爆发</span>
+    <span class="item-arrow">→</span>
+  </a>
 
-  <!-- 02 品牌筛选篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">02</div>
-    <h3>品牌筛选篇：7个硬指标帮你筛掉90%的坑</h3>
-    <a class="franchise-link" href="article-filter.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-filter.html">
+    <span class="item-num">02</span>
+    <span class="item-title">品牌筛选篇：7个硬指标帮你筛掉90%的坑</span>
+    <span class="item-arrow">→</span>
+  </a>
 
-  <!-- 03 品牌介绍篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">03</div>
-    <h3>品牌介绍篇：加盟邦豆之前请先读完这一篇</h3>
-    <a class="franchise-link" href="article-brand.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-brand.html">
+    <span class="item-num">03</span>
+    <span class="item-title">品牌介绍篇：加盟邦豆之前请先读完这一篇</span>
+    <span class="item-arrow">→</span>
+  </a>
 
-  <!-- 04 加盟费用篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">04</div>
-    <h3>加盟费用篇：加盟邦豆到底要花多少钱？</h3>
-    <a class="franchise-link" href="article-investment.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-investment.html">
+    <span class="item-num">04</span>
+    <span class="item-title">加盟费用篇：加盟邦豆到底要花多少钱？</span>
+    <span class="item-arrow">→</span>
+  </a>
 
-  <!-- 05 产品体系篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">05</div>
-    <h3>产品体系篇：邦豆6大产品线全景</h3>
-    <a class="franchise-link" href="article-products.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-products.html">
+    <span class="item-num">05</span>
+    <span class="item-title">产品体系篇：邦豆6大产品线全景</span>
+    <span class="item-arrow">→</span>
+  </a>
 
-  <!-- 06 开业日历篇 -->
-  <div class="franchise-card reveal">
-    <div class="franchise-num">06</div>
-    <h3>开业日历篇：从签约到稳定盈利的12个月</h3>
-    <a class="franchise-link" href="article-calendar.html">阅读全文</a>
-  </div>
+  <a class="franchise-item reveal" href="article-calendar.html">
+    <span class="item-num">06</span>
+    <span class="item-title">开业日历篇：从签约到稳定盈利的12个月</span>
+    <span class="item-arrow">→</span>
+  </a>
 
 </div>
 

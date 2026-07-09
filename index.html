@@ -2321,8 +2321,8 @@ document.addEventListener('mousemove', (e) => {
         coreColor = 'rgba(255, 210, 80,';
         midColor = 'rgba(240, 160, 50,';
       } else {
-        coreColor = 'rgba(200, 220, 255,';
-        midColor = 'rgba(130, 180, 230,';
+        coreColor = 'rgba(120, 220, 255,';
+        midColor = 'rgba(50, 150, 220,';
       }
 
       ctx.save();
@@ -2359,10 +2359,11 @@ document.addEventListener('mousemove', (e) => {
 
       // Cross flare for tier 1 stars (when bright enough)
       if (s.tier === 1 && s.alpha > 0.55) {
-        const flareAlpha = (s.alpha - 0.55) * 0.7;
-        const flareLen = s.baseSize * 2.2;
-        ctx.strokeStyle = 'rgba(255, 255, 255, ' + flareAlpha + ')';
-        ctx.lineWidth = 0.6;
+        const flareAlpha = (s.alpha - 0.55) * 0.8;
+        const flareLen = s.baseSize * 2.5;
+        ctx.strokeStyle = 'rgba(180, 230, 255, ' + flareAlpha + ')';
+        ctx.lineWidth = 0.7;
+        ctx.lineCap = 'round';
         // horizontal
         ctx.beginPath();
         ctx.moveTo(s.x - flareLen, s.y);
@@ -2374,7 +2375,7 @@ document.addEventListener('mousemove', (e) => {
         ctx.lineTo(s.x, s.y + flareLen);
         ctx.stroke();
         // diagonal 1
-        const d = flareLen * 0.55;
+        const d = flareLen * 0.6;
         ctx.beginPath();
         ctx.moveTo(s.x - d, s.y - d);
         ctx.lineTo(s.x + d, s.y + d);
@@ -2447,11 +2448,99 @@ document.addEventListener('mousemove', (e) => {
     ctx.restore();
   }
 
+  // ── Tech dot grid ──
+  function drawTechGrid(w, h) {
+    ctx.save();
+    const step = 28;
+    for (let x = step; x < w; x += step) {
+      for (let y = step; y < h; y += step) {
+        ctx.fillStyle = 'rgba(41,82,196,0.06)';
+        ctx.beginPath();
+        ctx.arc(x, y, 0.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    ctx.restore();
+  }
+
+  // ── Connection lines between tier 1 stars (constellation) ──
+  function drawConnections(w, h) {
+    ctx.save();
+    const tier1 = stars.filter(function(s) { return s.tier === 1; });
+    const maxDist = Math.min(w, h) * 0.18;
+    for (let i = 0; i < tier1.length; i++) {
+      for (let j = i + 1; j < tier1.length; j++) {
+        const dx = tier1[i].x - tier1[j].x;
+        const dy = tier1[i].y - tier1[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < maxDist) {
+          const alpha = (1 - dist / maxDist) * 0.12;
+          ctx.strokeStyle = 'rgba(100,170,255,' + alpha + ')';
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(tier1[i].x, tier1[i].y);
+          ctx.lineTo(tier1[j].x, tier1[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.restore();
+  }
+
+  // ── Scanning line ──
+  function drawScanLine(w, h) {
+    const t = performance.now() * 0.001;
+    const period = 6;
+    const progress = (t % period) / period;
+    const y = progress * h;
+    ctx.save();
+    const g = ctx.createLinearGradient(0, y - 40, 0, y + 40);
+    g.addColorStop(0, 'rgba(41,82,196,0)');
+    g.addColorStop(0.5, 'rgba(80,150,255,0.08)');
+    g.addColorStop(1, 'rgba(41,82,196,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, y - 40, w, 80);
+    // bright center line
+    ctx.strokeStyle = 'rgba(100,180,255,0.15)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  // ── Pulse rings on tier 1 stars ──
+  function drawPulseRings() {
+    const t = performance.now() * 0.001;
+    ctx.save();
+    stars.forEach(function(s) {
+      if (s.tier !== 1) return;
+      // Each tier-1 star has a pulse ring every ~4s, offset by phase
+      const ringPhase = (t + s.phase * 0.5) % 4;
+      const ringProgress = ringPhase / 4;
+      if (ringProgress < 0.7) {
+        const ringR = s.baseSize * (2 + ringProgress * 8);
+        const ringAlpha = (1 - ringProgress / 0.7) * 0.25;
+        ctx.strokeStyle = 'rgba(100,180,255,' + ringAlpha + ')';
+        ctx.lineWidth = 0.6;
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, ringR, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+    });
+    ctx.restore();
+  }
+
   function draw(w, h) {
     ctx.clearRect(0, 0, w, h);
+    drawTechGrid(w, h);
     drawBackgroundAura(w, h);
     drawChinaOutline(w, h);
+    drawScanLine(w, h);
+    drawConnections(w, h);
     drawStars();
+    drawPulseRings();
     drawLabels(w, h);
   }
 
