@@ -800,144 +800,139 @@
 
   /* ── 关于我们 公司信息 ── */
   .cta-contact-grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 820px;
     margin: 0 auto;
     position: relative;
   }
 
-  .cta-contact-grid::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 0; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(41,82,196,0.15) 20%, rgba(41,82,196,0.15) 80%, transparent 100%);
-    pointer-events: none;
-  }
-
   .cta-contact-card {
-    background: linear-gradient(135deg, rgba(15,30,65,0.85) 0%, rgba(10,20,45,0.95) 100%);
-    border: 1px solid rgba(41,82,196,0.12);
-    border-radius: 14px;
-    padding: 28px 32px;
-    min-width: 260px;
-    flex: 1;
-    text-align: left;
+    background: linear-gradient(160deg, rgba(12,24,55,0.9) 0%, rgba(8,15,38,0.95) 100%);
+    border: 1px solid rgba(41,82,196,0.15);
+    border-radius: 12px;
+    padding: 26px 20px 24px;
+    text-align: center;
     position: relative;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
     cursor: default;
-    isolation: isolate;
   }
 
+  /* Top accent line */
   .cta-contact-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0; left: 20%; right: 20%;
     height: 2px;
-    background: linear-gradient(90deg, transparent 0%, var(--primary-light) 50%, transparent 100%);
-    opacity: 0.3;
-    transition: opacity 0.4s;
+    border-radius: 2px;
+    transition: left 0.4s, right 0.4s;
   }
-
   .cta-contact-card:nth-child(1)::before {
-    background: linear-gradient(90deg, transparent 0%, var(--primary-light) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
   }
   .cta-contact-card:nth-child(2)::before {
-    background: linear-gradient(90deg, transparent 0%, var(--accent-light) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
   }
   .cta-contact-card:nth-child(3)::before {
-    background: linear-gradient(90deg, transparent 0%, #ff7a45 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent, #ff7a45, transparent);
   }
+  .cta-contact-card:hover::before { left: 5%; right: 5%; }
 
-  .cta-contact-card:hover::before {
-    opacity: 0.8;
-  }
-
+  /* Scanning line */
   .cta-contact-card::after {
     content: '';
     position: absolute;
-    bottom: 0; left: -100%; right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(74,143,255,0.4) 50%, transparent 100%);
-    animation: scanLine 4s linear infinite;
+    bottom: 0; left: -100%;
+    width: 100%; height: 1px;
+    animation: cardScan 4s linear infinite;
   }
-
+  .cta-contact-card:nth-child(1)::after {
+    background: linear-gradient(90deg, transparent, rgba(74,143,255,0.5), transparent);
+  }
   .cta-contact-card:nth-child(2)::after {
     animation-delay: 1.3s;
-    background: linear-gradient(90deg, transparent 0%, rgba(184,144,42,0.4) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent, rgba(212,169,58,0.5), transparent);
   }
-
   .cta-contact-card:nth-child(3)::after {
     animation-delay: 2.6s;
-    background: linear-gradient(90deg, transparent 0%, rgba(255,122,69,0.4) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent, rgba(255,122,69,0.5), transparent);
   }
-
-  @keyframes scanLine {
+  @keyframes cardScan {
     0% { left: -100%; }
     100% { left: 100%; }
   }
 
   .cta-contact-card:hover {
     border-color: rgba(41,82,196,0.35);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3), 0 0 20px rgba(41,82,196,0.08);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.35), 0 0 24px rgba(41,82,196,0.06);
   }
 
-  .cta-contact-card:hover::after {
-    animation-duration: 2s;
-  }
-
-  /* Card corner decorations */
+  /* Corner accents */
   .cta-contact-card .corner-tl, .cta-contact-card .corner-br {
     position: absolute;
-    width: 16px; height: 16px;
+    width: 14px; height: 14px;
     pointer-events: none;
+    opacity: 0.5;
+    transition: opacity 0.4s;
   }
   .cta-contact-card .corner-tl {
-    top: 6px; left: 6px;
-    border-top: 2px solid rgba(41,82,196,0.25);
-    border-left: 2px solid rgba(41,82,196,0.25);
+    top: 8px; left: 8px;
+    border-top: 1.5px solid rgba(41,82,196,0.3);
+    border-left: 1.5px solid rgba(41,82,196,0.3);
+    border-top-left-radius: 4px;
   }
   .cta-contact-card .corner-br {
-    bottom: 6px; right: 6px;
-    border-bottom: 2px solid rgba(41,82,196,0.25);
-    border-right: 2px solid rgba(41,82,196,0.25);
+    bottom: 8px; right: 8px;
+    border-bottom: 1.5px solid rgba(41,82,196,0.3);
+    border-right: 1.5px solid rgba(41,82,196,0.3);
+    border-bottom-right-radius: 4px;
   }
-  .cta-contact-card:nth-child(2) .corner-tl {
-    border-color: rgba(184,144,42,0.25);
-  }
-  .cta-contact-card:nth-child(2) .corner-br {
-    border-color: rgba(184,144,42,0.25);
-  }
-  .cta-contact-card:nth-child(3) .corner-tl {
-    border-color: rgba(255,122,69,0.25);
-  }
-  .cta-contact-card:nth-child(3) .corner-br {
-    border-color: rgba(255,122,69,0.25);
-  }
+  .cta-contact-card:nth-child(2) .corner-tl,
+  .cta-contact-card:nth-child(2) .corner-br { border-color: rgba(184,144,42,0.3); }
+  .cta-contact-card:nth-child(3) .corner-tl,
+  .cta-contact-card:nth-child(3) .corner-br { border-color: rgba(255,122,69,0.3); }
+  .cta-contact-card:hover .corner-tl,
+  .cta-contact-card:hover .corner-br { opacity: 1; }
 
+  /* Icon circle */
   .cta-contact-card .contact-icon {
-    font-size: 18px;
-    margin-bottom: 10px;
-    display: inline-block;
-    width: 40px; height: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 10px;
-    background: rgba(41,82,196,0.08);
-    border: 1px solid rgba(41,82,196,0.15);
+    width: 44px; height: 44px;
+    margin: 0 auto 14px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(41,82,196,0.1);
+    border: 1px solid rgba(41,82,196,0.2);
+    transition: box-shadow 0.4s;
+  }
+  .cta-contact-card .contact-icon svg {
+    width: 20px; height: 20px;
+    stroke: var(--primary-light);
+    fill: none;
+    stroke-width: 1.8;
   }
   .cta-contact-card:nth-child(2) .contact-icon {
-    background: rgba(184,144,42,0.08);
-    border-color: rgba(184,144,42,0.15);
+    background: rgba(184,144,42,0.1);
+    border-color: rgba(184,144,42,0.2);
   }
+  .cta-contact-card:nth-child(2) .contact-icon svg { stroke: var(--accent-light); }
   .cta-contact-card:nth-child(3) .contact-icon {
-    background: rgba(255,122,69,0.08);
-    border-color: rgba(255,122,69,0.15);
+    background: rgba(255,122,69,0.1);
+    border-color: rgba(255,122,69,0.2);
+  }
+  .cta-contact-card:nth-child(3) .contact-icon svg { stroke: #ff7a45; }
+  .cta-contact-card:hover .contact-icon {
+    box-shadow: 0 0 16px rgba(41,82,196,0.15);
+  }
+  .cta-contact-card:nth-child(2):hover .contact-icon {
+    box-shadow: 0 0 16px rgba(184,144,42,0.15);
+  }
+  .cta-contact-card:nth-child(3):hover .contact-icon {
+    box-shadow: 0 0 16px rgba(255,122,69,0.15);
   }
 
   .cta-contact-card .contact-label {
@@ -947,31 +942,23 @@
     text-transform: uppercase;
     margin-bottom: 8px;
     font-weight: 500;
+    font-family: 'SF Mono', 'Consolas', monospace;
   }
   .cta-contact-card .contact-value {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text-light);
     font-weight: 500;
     line-height: 1.6;
     letter-spacing: 0.5px;
   }
   .cta-contact-card .contact-phone {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 700;
     background: linear-gradient(135deg, #ffd85e, #e8a830);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: 1px;
-  }
-
-  /* Data line connector between cards */
-  .cta-contact-grid .connector-line {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    width: 20px; height: 1px;
-    background: linear-gradient(90deg, rgba(41,82,196,0.2), transparent);
-    z-index: -1;
   }
 
   /* ── 加盟讯息 ── */
@@ -1345,10 +1332,9 @@
 
     #cta { padding: 80px 16px; }
     .cta-headline { font-size: 24px; }
-    .cta-contact-grid { flex-direction: column; align-items: stretch; gap: 14px; padding: 0 8px; }
-    .cta-contact-card { min-width: auto; padding: 22px 24px; text-align: center; }
-    .cta-contact-card .contact-icon { margin: 0 auto 8px; }
-    .cta-contact-card .contact-phone { font-size: 22px; }
+    .cta-contact-grid { grid-template-columns: 1fr; gap: 12px; padding: 0 8px; }
+    .cta-contact-card { padding: 22px 20px; }
+    .cta-contact-card .contact-phone { font-size: 20px; }
 
     #franchise { padding: 60px 16px; }
     .franchise-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -1854,21 +1840,21 @@
     <div class="cta-contact-card">
       <div class="corner-tl"></div>
       <div class="corner-br"></div>
-      <div class="contact-icon">🏢</div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h2M9 13h2M9 17h2M13 9h2M13 13h2M13 17h2"/></svg></div>
       <div class="contact-label">COMPANY</div>
       <div class="contact-value">青岛翌盛和生物科技有限公司</div>
     </div>
     <div class="cta-contact-card">
       <div class="corner-tl"></div>
       <div class="corner-br"></div>
-      <div class="contact-icon">📍</div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
       <div class="contact-label">ADDRESS</div>
       <div class="contact-value">青岛市市北区长沙路保利天珺10层</div>
     </div>
     <div class="cta-contact-card">
       <div class="corner-tl"></div>
       <div class="corner-br"></div>
-      <div class="contact-icon">📞</div>
+      <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
       <div class="contact-label">HOTLINE</div>
       <div class="contact-value contact-phone">4008-707-686</div>
     </div>
