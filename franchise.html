@@ -4,9 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>加盟讯息 — 邦豆品牌官网丨专业祛痘加盟</title>
+<!-- Favicon / 网站图标 -->
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
 <meta property="og:type" content="website">
 <meta property="og:title" content="加盟讯息 — 邦豆品牌官网">
-<meta property="og:description" content="12篇干货，从入门到精通，读懂祛痘加盟这件事">
+<meta property="og:description" content="15篇文章，从入门到精通，读懂祛痘加盟这件事">
 <style>
   :root {
     --primary: #1a3a8f;
@@ -116,6 +121,25 @@
     width: 1px; height: 50px;
     background: linear-gradient(to bottom, transparent, var(--primary-light), transparent);
     margin: 32px auto 0;
+  }
+
+  /* Section block (加盟干货 / 加盟咨询) */
+  .franchise-block { max-width: 880px; margin: 0 auto; }
+  .block-title {
+    font-size: 20px; font-weight: 700; color: var(--text-light);
+    max-width: 880px; margin: 52px auto 20px; padding: 0 48px;
+    display: flex; align-items: center; gap: 12px; letter-spacing: 1px;
+  }
+  .block-title::before {
+    content: ''; width: 4px; height: 20px; border-radius: 2px;
+    background: linear-gradient(180deg, var(--primary-light), var(--accent-light));
+  }
+  .block-title span {
+    font-size: 12px; font-weight: 600; color: var(--accent-light);
+    background: rgba(184,144,42,0.12); padding: 3px 12px; border-radius: 14px; letter-spacing: 0;
+  }
+  @media(max-width:768px) {
+    .block-title { margin: 40px auto 16px; padding: 0 20px; font-size: 18px; }
   }
 
   /* List */
@@ -254,11 +278,15 @@
 <section class="page-hero">
   <div class="tag">FRANCHISE INFO</div>
   <h1>加盟<span class="gradient-text">讯息</span></h1>
-  <p class="sub">12篇干货，从入门到精通，读懂祛痘加盟这件事</p>
+  <p class="sub">15篇文章，从入门到精通，读懂祛痘加盟这件事</p>
   <div class="hero-divider"></div>
 </section>
 
-<div class="franchise-list">
+<!-- FRANCHISE_LIST_START -->
+
+  <section class="franchise-block">
+    <h2 class="block-title">加盟干货 <span>12篇</span></h2>
+    <div class="franchise-list">
 
     <a class="franchise-item reveal" href="article-industry.html">
     <span class="item-num">01</span>
@@ -428,7 +456,59 @@
     <span class="item-arrow">→</span>
   </a>
 
-</div>
+    </div>
+  </section>
+
+  <section class="franchise-block">
+    <h2 class="block-title">加盟咨询 <span>3篇</span></h2>
+    <div class="franchise-list">
+
+    <a class="franchise-item reveal" href="article-consult-join1.html">
+    <span class="item-num">13</span>
+    <span class="item-main">
+      <span class="item-title">祛痘品牌加盟怎么选？2026年创业者避坑清单</span>
+      <span class="item-tags">
+          <span class="item-tag">祛痘品牌加盟</span>
+          <span class="item-tag">加盟避坑</span>
+          <span class="item-tag">品牌筛选</span>
+          <span class="item-tag">选型指南</span>
+      </span>
+    </span>
+    <span class="item-arrow">→</span>
+  </a>
+
+    <a class="franchise-item reveal" href="article-consult-join2.html">
+    <span class="item-num">14</span>
+    <span class="item-main">
+      <span class="item-title">问题皮肤品牌加盟为什么成了创业新风口</span>
+      <span class="item-tags">
+          <span class="item-tag">问题皮肤品牌加盟</span>
+          <span class="item-tag">问题肌赛道</span>
+          <span class="item-tag">创业风口</span>
+          <span class="item-tag">刚需消费</span>
+      </span>
+    </span>
+    <span class="item-arrow">→</span>
+  </a>
+
+    <a class="franchise-item reveal" href="article-consult-join3.html">
+    <span class="item-num">15</span>
+    <span class="item-main">
+      <span class="item-title">邦豆皮肤修护中心：18年连锁修护中心的运营逻辑</span>
+      <span class="item-tags">
+          <span class="item-tag">邦豆皮肤修护中心</span>
+          <span class="item-tag">连锁运营</span>
+          <span class="item-tag">标准服务</span>
+          <span class="item-tag">修护体系</span>
+      </span>
+    </span>
+    <span class="item-arrow">→</span>
+  </a>
+
+    </div>
+  </section>
+
+<!-- FRANCHISE_LIST_END -->
 
 <footer>
   <div>© 2026 BAN·DO 青岛翌盛和生物科技有限公司</div>

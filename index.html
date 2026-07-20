@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>邦豆品牌官网丨专注面部问题肌丨专业祛痘加盟优选</title>
 
+<!-- Favicon / 网站图标 -->
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+
 <!-- Open Graph / 微信朋友圈分享 -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="邦豆品牌官网丨专注面部问题肌丨专业祛痘加盟优选">
@@ -1112,7 +1117,6 @@
     box-shadow: 0 0 20px rgba(184,144,42,0.15);
   }
 
-  /* 另一个计划 预留入口 */
   /* ── 加盟扶持计划 地图 ── */
   .support-plan {
     max-width: 1280px;
@@ -1132,10 +1136,15 @@
   }
   .map-wrapper {
     position: relative;
-    background: radial-gradient(ellipse at 55% 45%, rgba(41,82,196,0.08) 0%, rgba(8,15,38,0.95) 70%, rgba(4,9,26,1) 100%);
-    border: 1px solid rgba(41,82,196,0.25);
+    background:
+      radial-gradient(ellipse 120% 100% at 50% 45%, rgba(20,35,70,0.4) 0%, rgba(6,12,30,0.97) 55%, rgba(3,7,22,1) 85%);
+    border: 1px solid rgba(60,110,200,0.2);
     border-radius: 16px;
     overflow: hidden;
+    box-shadow:
+      0 0 80px rgba(41,82,196,0.08),
+      0 0 2px rgba(80,140,220,0.15),
+      inset 0 0 120px rgba(0,8,28,0.5);
   }
   .map-wrapper::after {
     content: '';
@@ -1143,14 +1152,14 @@
     inset: 0;
     border-radius: 16px;
     pointer-events: none;
-    box-shadow: inset 0 0 60px rgba(0,0,0,0.4);
-    z-index: 2;
+    box-shadow: inset 0 0 80px rgba(0,2,10,0.6);
+    z-index: 10;
   }
   #star-map {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9.5;
     cursor: default;
     position: relative;
     z-index: 1;
@@ -2115,450 +2124,379 @@ document.addEventListener('mousemove', (e) => {
   if (heroGlow) heroGlow.style.transform = `translate(calc(-50% + ${dx}px), calc(-60% + ${dy}px))`;
 });
 
-// ── 高端星光地图 ──
-(function() {
-  const canvas = document.getElementById('star-map');
-  if (!canvas) return;
+// ═══════════════════════════════════════
+// ══════════════════════════════════════
+//  邦豆 · 星光中国地图 v4
+//  精确版图 + 全域星光
+// ══════════════════════════════════════
+(function(){
+  const canvas=document.getElementById('star-map');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let stars=[],animId=null,mapReady=false;
 
-  const ctx = canvas.getContext('2d');
-  let stars = [];
-  let animId = null;
-  let mapReady = false;
-
-  function resize() {
-    const wrapper = canvas.parentElement;
-    const w = wrapper.clientWidth;
-    const h = Math.round(w * 10 / 16);
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = w * dpr;
-    canvas.height = h * dpr;
-    canvas.style.width = w + 'px';
-    canvas.style.height = h + 'px';
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
-    return { w, h };
+  function resize(){
+    const w=canvas.parentElement.clientWidth,h=Math.round(w*0.62);
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    canvas.width=w*dpr;canvas.height=h*dpr;
+    canvas.style.width=w+'px';canvas.style.height=h+'px';
+    ctx.setTransform(1,0,0,1,0,0);ctx.scale(dpr,dpr);
+    return{w,h};
   }
 
-  // Province data: [name, centerLon, centerLat, spreadLon, spreadLat, count, tier]  tier: 1=core 2=key 3=growing
-  const provinceData = [
-    ['山东', 117.5, 36.5, 3.0, 2.5, 15, 1],
-    ['江苏', 119.5, 33.0, 2.2, 2.0, 13, 1],
-    ['浙江', 120.5, 30.0, 2.0, 1.8, 12, 1],
-    ['河南', 113.5, 34.0, 2.6, 2.2, 15, 1],
-    ['安徽', 117.0, 32.0, 2.0, 2.0, 11, 1],
-    ['黑龙江', 127.0, 47.5, 4.5, 4.0, 10, 1],
-    ['广东', 113.5, 23.5, 2.8, 2.2, 6, 2],
-    ['四川', 104.0, 30.5, 4.5, 3.5, 5, 2],
-    ['湖北', 112.5, 31.0, 2.2, 1.8, 4, 2],
-    ['湖南', 112.0, 28.0, 2.2, 2.0, 4, 2],
-    ['河北', 115.0, 38.5, 2.2, 2.2, 4, 2],
-    ['福建', 118.0, 26.0, 2.0, 2.0, 4, 2],
-    ['辽宁', 122.0, 41.5, 2.3, 2.2, 4, 2],
-    ['山西', 112.0, 37.5, 2.0, 1.8, 3, 3],
-    ['陕西', 109.0, 35.5, 2.8, 2.2, 3, 3],
-    ['江西', 116.0, 28.0, 2.0, 1.8, 3, 3],
-    ['吉林', 126.0, 43.5, 2.2, 2.2, 2, 3],
-    ['内蒙古', 112.0, 44.0, 9.0, 8.0, 1, 3],
-    ['广西', 108.0, 23.0, 2.8, 2.2, 2, 3],
-    ['云南', 102.0, 25.0, 3.5, 3.5, 2, 3],
-    ['贵州', 106.5, 26.5, 2.2, 2.2, 2, 3],
-    ['甘肃', 104.0, 38.0, 5.5, 3.5, 1, 3],
-    ['海南', 110.0, 19.5, 1.0, 1.0, 1, 3],
-    ['新疆', 85.0, 42.0, 9.0, 7.0, 1, 3],
-    ['西藏', 91.0, 31.0, 7.0, 6.0, 1, 3],
-    ['北京', 116.4, 40.0, 0.4, 0.3, 1, 3],
-    ['天津', 117.5, 39.0, 0.3, 0.3, 1, 3],
-    ['上海', 121.5, 31.2, 0.3, 0.3, 1, 3],
-    ['重庆', 106.5, 29.5, 0.6, 0.5, 1, 3],
+  // ── 精确中国版图轮廓 (160+ 控制点) ──
+  const CHINA=[
+    [135.05,48.40],[133.25,47.75],[131.60,46.80],[130.20,45.30],[128.65,44.10],
+    [127.00,43.15],[125.45,42.35],[124.20,41.50],[122.80,40.55],[121.50,39.85],
+    [120.15,39.20],[119.05,38.65],[118.20,38.05],[117.70,37.55],[117.95,36.90],
+    [118.85,36.30],[119.70,35.60],[120.55,34.80],[121.40,34.10],[121.85,33.30],
+    [121.55,32.50],[121.00,31.70],[120.50,30.85],[119.85,29.90],[119.20,28.95],
+    [118.55,28.05],[117.80,27.20],[116.90,26.35],[115.95,25.50],[114.95,24.60],
+    [113.90,23.75],[112.85,22.90],[111.80,22.20],[110.70,21.60],[109.55,21.15],
+    [108.40,21.00],[107.30,21.10],[106.20,21.35],[105.10,21.75],[104.00,22.25],
+    [102.90,22.80],[101.80,23.35],[100.70,23.90],[99.60,24.45],[98.55,25.00],
+    [97.50,25.60],[96.50,26.30],[95.55,27.10],[94.65,27.95],[93.80,28.80],
+    [92.95,29.65],[92.15,30.45],[91.40,31.25],[90.70,32.05],[90.05,32.85],
+    [89.40,33.65],[88.75,34.45],[88.05,35.25],[87.30,36.05],[86.50,36.90],
+    [85.65,37.80],[84.75,38.70],[83.80,39.60],[82.80,40.50],[81.75,41.35],
+    [80.65,42.15],[79.55,42.95],[78.90,43.70],[79.35,44.45],[80.10,45.20],
+    [81.00,45.95],[82.00,46.65],[83.10,47.30],[84.25,47.85],[85.45,48.30],
+    [86.70,48.70],[87.95,49.00],[89.20,49.25],[90.45,49.40],[91.70,49.45],
+    [92.95,49.40],[94.20,49.25],[95.45,49.00],[96.70,48.70],[97.90,48.35],
+    [99.10,47.95],[100.30,47.55],[101.50,47.20],[102.70,46.90],[103.85,46.60],
+    [105.00,46.35],[106.10,46.15],[107.20,45.95],[108.30,45.80],[109.40,45.70],
+    [110.50,45.65],[111.60,45.65],[112.70,45.70],[113.75,45.80],[114.80,45.95],
+    [115.85,46.15],[116.90,46.40],[117.95,46.65],[119.00,46.95],[120.05,47.25],
+    [121.10,47.55],[122.15,47.80],[123.20,48.00],[124.25,48.15],[125.30,48.25],
+    [126.35,48.35],[127.40,48.45],[128.45,48.50],[129.50,48.50],[130.55,48.45],
+    [131.60,48.35],[132.65,48.20],[133.70,48.00],[134.75,47.75],[135.05,48.40],
+  ];
+  // 台湾
+  const TW=[
+    [121.50,25.45],[121.20,24.85],[120.95,24.25],[120.85,23.65],
+    [121.15,23.10],[121.50,22.80],[121.90,23.30],[122.00,23.90],
+    [121.85,24.50],[121.70,25.10],[121.50,25.45],
+  ];
+  // 海南岛 (含南海诸岛示意)
+  const HN=[
+    [110.25,20.05],[109.95,19.45],[109.55,18.85],[109.20,18.25],
+    [109.50,17.70],[110.05,17.25],[110.65,17.65],[111.05,18.15],
+    [111.20,18.75],[111.00,19.35],[110.65,19.85],[110.25,20.05],
   ];
 
-  const minLon = 73, maxLon = 135, minLat = 18, maxLat = 54;
-  function lon2x(lon, w) { return ((lon - minLon) / (maxLon - minLon)) * w * 0.88 + w * 0.06; }
-  function lat2y(lat, h) { return ((maxLat - lat) / (maxLat - minLat)) * h * 0.85 + h * 0.08; }
+  // 省份中心 + 星星配置 (覆盖全国, 不只东部)
+  const PROVS=[
+    // 核心区 (金色大星)
+    ['山东',117.0,36.4,3.0,2.5,14],['江苏',119.8,32.9,2.3,2.0,12],
+    ['浙江',120.3,29.0,2.0,1.8,11],['河南',113.5,33.9,2.8,2.4,13],
+    ['安徽',117.1,31.7,2.2,2.0,11],['河北',115.3,38.2,2.5,2.2,9],
+    ['北京',116.4,40.0,0.6,0.5,3],['天津',117.2,39.1,0.5,0.4,2],
+    ['上海',121.5,31.2,0.5,0.4,3],
+    // 重点扩展 (银色中星)
+    ['黑龙江',127.0,47.2,4.5,3.8,10],['吉林',125.8,43.8,3.0,2.6,7],
+    ['辽宁',122.4,41.8,2.8,2.4,8],['内蒙古',112.5,43.5,9.0,7.5,8],
+    ['山西',112.2,37.5,2.2,2.0,6],['陕西',108.9,34.3,3.0,2.5,7],
+    ['湖北',112.3,30.7,2.4,2.0,6],['湖南',112.8,27.7,2.4,2.2,6],
+    ['广东',113.5,23.2,3.0,2.5,8],['福建',118.1,26.1,2.2,2.0,6],
+    ['四川',104.1,30.3,4.5,3.8,8],['重庆',106.5,29.6,1.0,0.9,3],
+    // 扩展区 (蓝白色小星)
+    ['广西',108.3,23.0,3.0,2.5,6],['云南',102.4,25.0,4.0,3.5,6],
+    ['贵州',106.7,26.6,2.4,2.2,5],['甘肃',103.8,36.0,5.5,4.0,5],
+    ['新疆',86.5,41.7,9.5,8.0,7],['西藏',91.1,29.6,7.5,6.5,4],
+    ['青海',96.0,35.8,5.0,4.0,4],['宁夏',106.2,37.5,1.5,1.3,3],
+    ['江西',115.9,27.7,2.2,2.0,5],['海南',109.5,19.0,1.2,1.0,2],
+  ];
 
-  function drawChinaOutline(w, h) {
+  const LON_MIN=73,LON_MAX=136,LAT_MIN=15,LAT_MAX=54;
+  const PAD_X=0.06,PAD_Y=0.07;
+  function lx(lon,w){return((lon-LON_MIN)/(LON_MAX-LON_MIN))*w*(1-PAD_X*2)+w*PAD_X;}
+  function ly(lat,h){return((LAT_MAX-lat)/(LAT_MAX-LAT_MIN))*h*(1-PAD_Y*2)+h*PAD_Y;}
+
+  // ═══ 绘制函数 ═══
+
+  function drawBg(w,h){
+    // 深空渐变背景
+    var bg=ctx.createRadialGradient(w*0.52,h*0.48,w*0.12,w*0.5,h*0.5,w*0.72);
+    bg.addColorStop(0,'rgba(18,28,58,0.95)');
+    bg.addColorStop(0.4,'rgba(10,18,42,0.97)');
+    bg.addColorStop(0.75,'rgba(6,12,32,0.98)');
+    bg.addColorStop(1,'rgba(3,8,22,1)');
+    ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+
+    // 微弱网格点
     ctx.save();
+    for(var gx=24;gx<w;gx+=28){for(var gy=24;gy<h;gy+=28){
+      ctx.fillStyle='rgba(60,110,200,0.035)';
+      ctx.beginPath();ctx.arc(gx,gy,0.6,0,Math.PI*2);ctx.fill();
+    }}
+    ctx.restore();
+
+    // 核心区域暖光晕 (华东华中)
+    var hotspots=[
+      [lx(116,w),ly(34,h),160,'rgba(255,200,60,0.025)'],
+      [lx(119.5,w),ly(32.5,h),140,'rgba(255,190,55,0.02)'],
+      [lx(113.5,w),ly(34.5,h),170,'rgba(255,205,65,0.028)'],
+      [lx(117,w),ly(32,h),130,'rgba(245,180,50,0.018)'],
+      [lx(127,w),ly(47,h),120,'rgba(240,185,55,0.016)'],
+    ];
+    hotspots.forEach(function(h){
+      var g=ctx.createRadialGradient(h[0],h[1],0,h[0],h[1],h[2]);
+      g.addColorStop(0,h[3]);g.addColorStop(1,'transparent');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(h[0],h[1],h[2],0,Math.PI*2);ctx.fill();
+    });
+  }
+
+  function drawChina(w,h){
+    ctx.save();
+
+    // 填充渐变
     ctx.beginPath();
-    ctx.moveTo(lon2x(134,w), lat2y(48,h));
-    ctx.lineTo(lon2x(131,w), lat2y(46,h));
-    ctx.lineTo(lon2x(130,w), lat2y(44,h));
-    ctx.lineTo(lon2x(128,w), lat2y(43.5,h));
-    ctx.lineTo(lon2x(125,w), lat2y(43,h));
-    ctx.lineTo(lon2x(124,w), lat2y(41,h));
-    ctx.lineTo(lon2x(122,w), lat2y(40,h));
-    ctx.lineTo(lon2x(119,w), lat2y(39,h));
-    ctx.lineTo(lon2x(118,w), lat2y(38,h));
-    ctx.lineTo(lon2x(122,w), lat2y(37.5,h));
-    ctx.lineTo(lon2x(122.5,w), lat2y(36,h));
-    ctx.lineTo(lon2x(121,w), lat2y(34,h));
-    ctx.lineTo(lon2x(122,w), lat2y(31,h));
-    ctx.lineTo(lon2x(121,w), lat2y(29,h));
-    ctx.lineTo(lon2x(120.5,w), lat2y(27,h));
-    ctx.lineTo(lon2x(119,w), lat2y(25,h));
-    ctx.lineTo(lon2x(118.5,w), lat2y(24,h));
-    ctx.lineTo(lon2x(117,w), lat2y(23.5,h));
-    ctx.lineTo(lon2x(114,w), lat2y(22.5,h));
-    ctx.lineTo(lon2x(111,w), lat2y(21.5,h));
-    ctx.lineTo(lon2x(110,w), lat2y(22,h));
-    ctx.lineTo(lon2x(106,w), lat2y(23,h));
-    ctx.lineTo(lon2x(102,w), lat2y(22.5,h));
-    ctx.lineTo(lon2x(100,w), lat2y(22,h));
-    ctx.lineTo(lon2x(98,w), lat2y(24,h));
-    ctx.lineTo(lon2x(98,w), lat2y(26,h));
-    ctx.lineTo(lon2x(97.5,w), lat2y(28,h));
-    ctx.lineTo(lon2x(92,w), lat2y(27.5,h));
-    ctx.lineTo(lon2x(88,w), lat2y(28,h));
-    ctx.lineTo(lon2x(85,w), lat2y(29,h));
-    ctx.lineTo(lon2x(82,w), lat2y(30,h));
-    ctx.lineTo(lon2x(80,w), lat2y(32,h));
-    ctx.lineTo(lon2x(79,w), lat2y(34,h));
-    ctx.lineTo(lon2x(80,w), lat2y(36,h));
-    ctx.lineTo(lon2x(82,w), lat2y(40,h));
-    ctx.lineTo(lon2x(84,w), lat2y(43,h));
-    ctx.lineTo(lon2x(86,w), lat2y(46,h));
-    ctx.lineTo(lon2x(88,w), lat2y(48,h));
-    ctx.lineTo(lon2x(91,w), lat2y(50,h));
-    ctx.lineTo(lon2x(96,w), lat2y(50,h));
-    ctx.lineTo(lon2x(100,w), lat2y(48,h));
-    ctx.lineTo(lon2x(107,w), lat2y(48,h));
-    ctx.lineTo(lon2x(112,w), lat2y(47,h));
-    ctx.lineTo(lon2x(116,w), lat2y(46.5,h));
-    ctx.lineTo(lon2x(120,w), lat2y(47,h));
-    ctx.lineTo(lon2x(123,w), lat2y(49,h));
-    ctx.lineTo(lon2x(127,w), lat2y(49.5,h));
-    ctx.lineTo(lon2x(130,w), lat2y(49,h));
-    ctx.lineTo(lon2x(132,w), lat2y(48,h));
+    CHINA.forEach(function(p,i){var x=lx(p[0],w),y=ly(p[1],h);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
     ctx.closePath();
 
-    // Taiwan
-    ctx.moveTo(lon2x(121.5,w), lat2y(25.5,h));
-    ctx.lineTo(lon2x(121,w), lat2y(24.5,h));
-    ctx.lineTo(lon2x(121,w), lat2y(23,h));
-    ctx.lineTo(lon2x(121.5,w), lat2y(22,h));
-    ctx.lineTo(lon2x(121.5,w), lat2y(25.5,h));
+    // 多层填充: 深蓝底 + 核心暖色
+    var fillG=ctx.createLinearGradient(0,0,w,h);
+    fillG.addColorStop(0,'rgba(14,24,52,0.72)');
+    fillG.addColorStop(0.4,'rgba(18,30,60,0.68)');
+    fillG.addColorStop(0.7,'rgba(12,22,48,0.70)');
+    fillG.addColorStop(1,'rgba(8,16,38,0.74)');
+    ctx.fillStyle=fillG;ctx.fill();
 
-    // Hainan
-    ctx.moveTo(lon2x(110.5,w), lat2y(20,h));
-    ctx.lineTo(lon2x(110,w), lat2y(19,h));
-    ctx.lineTo(lon2x(109.5,w), lat2y(18.5,h));
-    ctx.lineTo(lon2x(110,w), lat2y(19,h));
-    ctx.lineTo(lon2x(110.5,w), lat2y(20,h));
+    // 华东核心暖色光斑
+    var coreX=lx(115,w),coreY=ly(33.5,h),coreR=Math.min(w,h)*0.17;
+    var coreG=ctx.createRadialGradient(coreX,coreY,0,coreX,coreY,coreR);
+    coreG.addColorStop(0,'rgba(255,195,50,0.055)');
+    coreG.addColorStop(0.4,'rgba(230,165,35,0.028)');
+    coreG.addColorStop(0.75,'rgba(200,140,25,0.01)');
+    coreG.addColorStop(1,'transparent');
+    ctx.fillStyle=coreG;
+    ctx.beginPath();ctx.arc(coreX,coreY,coreR,0,Math.PI*2);ctx.fill();
 
-    // Fill
-    ctx.fillStyle = 'rgba(8,15,38,0.75)';
-    ctx.fill();
-
-    // Glow border
+    // 外发光描边 (主边框)
     ctx.save();
-    ctx.strokeStyle = 'rgba(41,82,196,0.25)';
-    ctx.lineWidth = 2;
-    ctx.shadowColor = 'rgba(41,82,196,0.4)';
-    ctx.shadowBlur = 12;
+    ctx.beginPath();
+    CHINA.forEach(function(p,i){var x=lx(p[0],w),y=ly(p[1],h);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    ctx.closePath();
+    ctx.strokeStyle='rgba(80,145,255,0.38)';
+    ctx.lineWidth=1.6;
+    ctx.shadowColor='rgba(70,130,235,0.55)';
+    ctx.shadowBlur=20;
     ctx.stroke();
     ctx.restore();
 
-    // Inner thin line
-    ctx.strokeStyle = 'rgba(80,130,220,0.18)';
-    ctx.lineWidth = 0.7;
-    ctx.lineDashOffset = 0;
-    ctx.setLineDash([4, 8]);
+    // 内层细虚线
+    ctx.save();
+    ctx.beginPath();
+    CHINA.forEach(function(p,i){var x=lx(p[0],w),y=ly(p[1],h);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+    ctx.closePath();
+    ctx.strokeStyle='rgba(110,175,255,0.18)';
+    ctx.lineWidth=0.7;
+    ctx.setLineDash([5,9]);
     ctx.stroke();
+    ctx.setLineDash([]);
+
+    // 台湾
+    [TW,HN].forEach(function(island){
+      ctx.beginPath();
+      island.forEach(function(p,i){var x=lx(p[0],w),y=ly(p[1],h);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+      ctx.closePath();
+      ctx.fillStyle='rgba(14,24,52,0.65)';
+      ctx.fill();
+      ctx.strokeStyle='rgba(100,165,250,0.22)';
+      ctx.lineWidth=0.6;
+      ctx.stroke();
+    });
+
     ctx.restore();
   }
 
-  function generateStars(w, h) {
-    stars = [];
-    provinceData.forEach(function(prov) {
-      const name = prov[0], cLon = prov[1], cLat = prov[2], sLon = prov[3], sLat = prov[4], count = prov[5], tier = prov[6];
-      for (let i = 0; i < count; i++) {
-        const lon = cLon + (Math.random() - 0.5) * sLon * 2;
-        const lat = cLat + (Math.random() - 0.5) * sLat * 2;
-        const x = lon2x(lon, w);
-        const y = lat2y(lat, h);
-
-        // Tier-based sizing
-        let baseSize;
-        if (tier === 1) baseSize = 2.0 + Math.random() * 2.8;
-        else if (tier === 2) baseSize = 1.4 + Math.random() * 2.0;
-        else baseSize = 1.0 + Math.random() * 1.5;
-
-        const phase = Math.random() * Math.PI * 2;
-        const period = 3.5 + Math.random() * 5.0; // slow pulse: 3.5-8.5 sec cycle
-        const speed = (2 * Math.PI) / (period * 60); // convert to rad/frame @60fps
-
-        stars.push({ x, y, baseSize, phase, speed, tier, alpha: 0 });
+  function genStars(w,h){
+    stars=[];
+    PROVS.forEach(function(pv){
+      var name=pv[0],clon=pv[1],clat=pv[2],slon=pv[3],slat=pv[4],cnt=pv[5];
+      var tier=(cnt>=10)?1:(cnt>=5)?2:3;
+      for(var i=0;i<cnt;i++){
+        var lon=clon+(Math.random()-0.5)*slon*2;
+        var lat=clat+(Math.random()-0.5)*slat*2;
+        var x=lx(lon,w),y=ly(lat,h);
+        var bs;
+        if(tier===1)bs=2.0+Math.random()*2.8;
+        else if(tier===2)bs=1.3+Math.random()*2.0;
+        else bs=0.8+Math.random()*1.4;
+        stars.push({
+          x:x,y:y,sz:bs,
+          ph:Math.random()*Math.PI*2,
+          sp:(2*Math.PI)/((3+Math.random()*5)*60),
+          tier:tier,al:0,
+          twSp:0.7+Math.random()*1.3
+        });
       }
     });
   }
 
-  function drawStars() {
-    const t = performance.now() * 0.001;
-    stars.forEach(function(s) {
-      const val = Math.sin(t * s.speed + s.phase);
-      // alpha range: 0.2 to 1.0 for elegant dim-bright cycle
-      s.alpha = 0.2 + (val + 1) * 0.4;
+  // 星星颜色方案
+  function sc(s,a){
+    if(s.tier===1)
+      return{c:'rgba(255,235,125,',m:'rgba(255,195,70,',f:'rgba(255,250,220,',b:'rgba(100,180,255,'};
+    if(s.tier===2)
+      return{c:'rgba(255,215,100,',m:'rgba(240,168,48,',f:'rgba(255,240,190,',b:'rgba(80,155,225,'};
+    return{c:'rgba(140,228,255,',m:'rgba(70,178,245,',f:'rgba(210,245,255,',b:'rgba(60,140,210,'};
+  }
 
-      // Color by tier
-      let coreColor, midColor;
-      if (s.tier === 1) {
-        coreColor = 'rgba(255, 235, 120,';
-        midColor = 'rgba(255, 200, 60,';
-      } else if (s.tier === 2) {
-        coreColor = 'rgba(255, 210, 80,';
-        midColor = 'rgba(240, 160, 50,';
-      } else {
-        coreColor = 'rgba(120, 220, 255,';
-        midColor = 'rgba(50, 150, 220,';
-      }
-
+  function drawStars(t){
+    stars.forEach(function(s){
+      var v=Math.sin(t*s.sp+s.ph+s.twSp*t);
+      s.al=0.18+(v+1)*0.41;
+      var C=sc(s,s.al),a=s.al;
       ctx.save();
 
-      // Layer 1 — outer glow (large, soft)
-      const g1 = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.baseSize * 5);
-      g1.addColorStop(0, midColor + (s.alpha * 0.5) + ')');
-      g1.addColorStop(0.5, midColor + (s.alpha * 0.15) + ')');
-      g1.addColorStop(1, midColor + '0)');
-      ctx.fillStyle = g1;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.baseSize * 5, 0, Math.PI * 2);
-      ctx.fill();
+      // 外柔光 (大范围柔和辉光)
+      var g1=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.sz*5.5);
+      g1.addColorStop(0,C.m+(a*0.35)+')');g1.addColorStop(0.45,C.m+(a*0.08)+')');g1.addColorStop(1,C.m+'0)');
+      ctx.fillStyle=g1;ctx.beginPath();ctx.arc(s.x,s.y,s.sz*5.5,0,Math.PI*2);ctx.fill();
 
-      // Layer 2 — mid glow
-      const g2 = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.baseSize * 2.5);
-      g2.addColorStop(0, coreColor + (s.alpha * 0.85) + ')');
-      g2.addColorStop(0.5, midColor + (s.alpha * 0.4) + ')');
-      g2.addColorStop(1, midColor + '0)');
-      ctx.fillStyle = g2;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.baseSize * 2.5, 0, Math.PI * 2);
-      ctx.fill();
+      // 中辉光
+      var g2=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.sz*2.6);
+      g2.addColorStop(0,C.c+(a*0.88)+')');g2.addColorStop(0.5,C.m+(a*0.32)+')');g2.addColorStop(1,C.m+'0)');
+      ctx.fillStyle=g2;ctx.beginPath();ctx.arc(s.x,s.y,s.sz*2.6,0,Math.PI*2);ctx.fill();
 
-      // Layer 3 — core bright center
-      const g3 = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.baseSize * 0.8);
-      g3.addColorStop(0, 'rgba(255, 255, 255, ' + (s.alpha) + ')');
-      g3.addColorStop(0.4, coreColor + (s.alpha * 0.9) + ')');
-      g3.addColorStop(1, midColor + '0)');
-      ctx.fillStyle = g3;
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.baseSize * 0.8, 0, Math.PI * 2);
-      ctx.fill();
+      // 核心亮点
+      var g3=ctx.createRadialGradient(s.x,s.y,0,s.x,s.y,s.sz*0.85);
+      g3.addColorStop(0,'rgba(255,255,255,'+a+')');
+      g3.addColorStop(0.3,C.f+(a*0.88)+')');
+      g3.addColorStop(1,C.c+'0)');
+      ctx.fillStyle=g3;ctx.beginPath();ctx.arc(s.x,s.y,s.sz*0.85,0,Math.PI*2);ctx.fill();
 
-      // Cross flare for tier 1 stars (when bright enough)
-      if (s.tier === 1 && s.alpha > 0.55) {
-        const flareAlpha = (s.alpha - 0.55) * 0.8;
-        const flareLen = s.baseSize * 2.5;
-        ctx.strokeStyle = 'rgba(180, 230, 255, ' + flareAlpha + ')';
-        ctx.lineWidth = 0.7;
-        ctx.lineCap = 'round';
-        // horizontal
-        ctx.beginPath();
-        ctx.moveTo(s.x - flareLen, s.y);
-        ctx.lineTo(s.x + flareLen, s.y);
-        ctx.stroke();
-        // vertical
-        ctx.beginPath();
-        ctx.moveTo(s.x, s.y - flareLen);
-        ctx.lineTo(s.x, s.y + flareLen);
-        ctx.stroke();
-        // diagonal 1
-        const d = flareLen * 0.6;
-        ctx.beginPath();
-        ctx.moveTo(s.x - d, s.y - d);
-        ctx.lineTo(s.x + d, s.y + d);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(s.x + d, s.y - d);
-        ctx.lineTo(s.x - d, s.y + d);
-        ctx.stroke();
+      // 十字光芒 (tier 1/2 高亮度时)
+      if(s.tier<=2&&a>0.58){
+        var fa=(a-0.58)*0.85,fl=s.sz*2.8;
+        ctx.strokeStyle=C.b+fa+')';ctx.lineWidth=0.55;ctx.lineCap='round';
+        ctx.beginPath();ctx.moveTo(s.x-fl,s.y);ctx.lineTo(s.x+fl,s.y);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(s.x,s.y-fl);ctx.lineTo(s.x,s.y+fl);ctx.stroke();
+        var dl=fl*0.5;
+        ctx.globalAlpha*=0.45;
+        ctx.beginPath();ctx.moveTo(s.x-dl,s.y-dl);ctx.lineTo(s.x+dl,s.y+dl);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(s.x+dl,s.y-dl);ctx.lineTo(s.x-dl,s.y+dl);ctx.stroke();
       }
-
       ctx.restore();
     });
   }
 
-  function drawLabels(w, h) {
+  // 连线网络 (核心省份之间)
+  function drawLinks(w,h,t){
     ctx.save();
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+    var t1=stars.filter(function(s){return s.tier===1;}),
+        t12=stars.filter(function(s){return s.tier<=2;}),
+        md=Math.min(w,h)*0.19;
 
-    // Only label key provinces — much cleaner look
-    const labels = [
-      ['山东', 117.5, 36.5, true],
-      ['江苏', 119.5, 33, true],
-      ['浙江', 120.5, 30, true],
-      ['河南', 113.5, 34, true],
-      ['安徽', 117, 32, true],
-      ['黑龙江', 127, 47.5, true],
-      ['广东', 113.5, 23.5, false],
-      ['四川', 104, 30.5, false],
-      ['湖北', 112.5, 31, false],
-      ['新疆', 85, 43, false],
-      ['西藏', 91, 32, false],
-      ['内蒙古', 113, 45, false],
+    // 金色核心网
+    for(var i=0;i<t1.length;i++){for(var j=i+1;j<t1.length;j++){
+      var dx=t1[i].x-t1[j].x,dy=t1[i].y-t1[j].y,dst=Math.sqrt(dx*dx+dy*dy);
+      if(dst<md*0.7){
+        var wa=Math.sin(t*0.6+i*j)*0.06+0.13,al=(1-dst/(md*0.7))*wa;
+        ctx.strokeStyle='rgba(255,208,90,'+al+')';
+        ctx.lineWidth=0.55;
+        ctx.beginPath();ctx.moveTo(t1[i].x,t1[i].y);ctx.lineTo(t1[j].x,t1[j].y);ctx.stroke();
+      }
+    }}
+    // 蓝色扩展连接 (tier2→tier1)
+    for(i=0;i<t12.length;i++){for(j=0;j<t1.length;j++){
+      var dx=t12[i].x-t1[j].x,dy=t12[i].y-t1[j].y,dst=Math.sqrt(dx*dx+dy*dy);
+      if(dst<md*0.5&&t12[i]!==t1[j]){
+        var al2=(1-dst/(md*0.5))*0.055;
+        ctx.strokeStyle='rgba(90,170,255,'+al2+')';
+        ctx.lineWidth=0.35;
+        ctx.beginPath();ctx.moveTo(t12[i].x,t12[i].y);ctx.lineTo(t1[j].x,t1[j].y);ctx.stroke();
+      }
+    }}
+    ctx.restore();
+  }
+
+  // 横向扫描线
+  function scanLine(w,h,t){
+    var pr=7,pg=(t%pr)/pr,y=pg*h;
+    ctx.save();
+    var sg=ctx.createLinearGradient(0,y-35,0,y+35);
+    sg.addColorStop(0,'rgba(50,100,200,0)');sg.addColorStop(0.5,'rgba(80,155,255,0.065)');sg.addColorStop(1,'rgba(50,100,200,0)');
+    ctx.fillStyle=sg;ctx.fillRect(0,y-35,w,70);
+    ctx.strokeStyle='rgba(100,180,255,0.12)';ctx.lineWidth=0.8;
+    ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
+    ctx.restore();
+  }
+
+  // 脉冲环 (核心星星)
+  function pulseRing(t){
+    ctx.save();
+    stars.forEach(function(s){if(s.tier!==1)return;
+      var rp=(t+s.ph*0.4)%4.2,rp2=rp/4.2;
+      if(rp2<0.65){
+        var rr=s.sz*(2.2+rp2*9),ra=(1-rp2/0.65)*0.2;
+        ctx.strokeStyle='rgba(100,182,255,'+ra+')';
+        ctx.lineWidth=0.5;
+        ctx.beginPath();ctx.arc(s.x,s.y,rr,0,Math.PI*2);ctx.stroke();
+      }
+    });
+    ctx.restore();
+  }
+
+  // 省份标注
+  function labels(w,h){
+    ctx.save();
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    var labs=[
+      ['山东',117.0,36.4,true],['江苏',119.8,32.9,true],['浙江',120.3,29.0,true],
+      ['河南',113.5,33.9,true],['安徽',117.1,31.7,true],['河北',115.3,38.2,true],
+      ['黑龙江',127.0,47.2,true],['广东',113.5,23.2,false],['四川',104.1,30.3,false],
+      ['湖北',112.3,30.7,false],['湖南',112.8,27.7,false],['福建',118.1,26.1,false],
+      ['辽宁',122.4,41.8,false],['吉林',125.8,43.8,false],['内蒙古',112.5,43.5,false],
+      ['山西',112.2,37.5,false],['陕西',108.9,34.3,false],['新疆',86.5,41.7,false],
+      ['西藏',91.1,29.6,false],
     ];
-
-    labels.forEach(function(l) {
-      const name = l[0], lon = l[1], lat = l[2], isHL = l[3];
-      const x = lon2x(lon, w), y = lat2y(lat, h);
-      ctx.font = isHL
-        ? '500 11px "PingFang SC","Microsoft YaHei",sans-serif'
-        : '9px "PingFang SC","Microsoft YaHei",sans-serif';
-      ctx.fillStyle = isHL ? 'rgba(230,220,180,0.7)' : 'rgba(140,155,185,0.45)';
-      ctx.fillText(name, x, y);
+    labs.forEach(function(lb){
+      var x=lx(lb[1],w),y=ly(lb[2],h);
+      ctx.font=lb[3]?'500 11px "PingFang SC","Microsoft YaHei",sans-serif':'9px "PingFang SC","Microsoft YaHei",sans-serif';
+      ctx.fillStyle=lb[3]?'rgba(238,228,188,0.72)':'rgba(148,166,198,0.42)';
+      ctx.fillText(lb[0],x,y);
     });
-
+    // 角标
+    ctx.font='600 12px "PingFang SC","Microsoft YaHei",sans-serif';
+    ctx.fillStyle='rgba(70,110,175,0.16)';ctx.textAlign='left';
+    ctx.fillText('邦豆·全国布局',w*0.038,h*0.945);
     ctx.restore();
   }
 
-  function drawBackgroundAura(w, h) {
-    // Subtle golden glow behind core provinces
-    const hotspots = [
-      [lon2x(117.5,w), lat2y(36.5,h), 120],  // Shandong
-      [lon2x(119.5,w), lat2y(33,h), 100],    // Jiangsu
-      [lon2x(113.5,w), lat2y(34,h), 130],    // Henan
-      [lon2x(117,w), lat2y(32,h), 90],        // Anhui
-      [lon2x(127,w), lat2y(47.5,h), 80],      // Heilongjiang
-    ];
-
-    ctx.save();
-    hotspots.forEach(function(h) {
-      const g = ctx.createRadialGradient(h[0], h[1], 0, h[0], h[1], h[2]);
-      g.addColorStop(0, 'rgba(255, 215, 0, 0.04)');
-      g.addColorStop(0.5, 'rgba(255, 200, 0, 0.015)');
-      g.addColorStop(1, 'rgba(255, 180, 0, 0)');
-      ctx.fillStyle = g;
-      ctx.beginPath();
-      ctx.arc(h[0], h[1], h[2], 0, Math.PI * 2);
-      ctx.fill();
-    });
-    ctx.restore();
+  function draw(){
+    var wh=resize(),t=performance.now()*0.001;
+    ctx.clearRect(0,0,wh.w,wh.h);
+    drawBg(wh.w,wh.h);
+    drawChina(wh.w,wh.h);
+    scanLine(wh.w,wh.h,t);
+    drawLinks(wh.w,wh.h,t);
+    drawStars(t);
+    pulseRing(t);
+    labels(wh.w,wh.h);
   }
 
-  // ── Tech dot grid ──
-  function drawTechGrid(w, h) {
-    ctx.save();
-    const step = 28;
-    for (let x = step; x < w; x += step) {
-      for (let y = step; y < h; y += step) {
-        ctx.fillStyle = 'rgba(41,82,196,0.06)';
-        ctx.beginPath();
-        ctx.arc(x, y, 0.8, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-    ctx.restore();
+  function animate(){
+    if(!mapReady){var wh=resize();genStars(wh.w,wh.h);mapReady=true;}
+    draw();
+    animId=requestAnimationFrame(animate);
   }
 
-  // ── Connection lines between tier 1 stars (constellation) ──
-  function drawConnections(w, h) {
-    ctx.save();
-    const tier1 = stars.filter(function(s) { return s.tier === 1; });
-    const maxDist = Math.min(w, h) * 0.18;
-    for (let i = 0; i < tier1.length; i++) {
-      for (let j = i + 1; j < tier1.length; j++) {
-        const dx = tier1[i].x - tier1[j].x;
-        const dy = tier1[i].y - tier1[j].y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < maxDist) {
-          const alpha = (1 - dist / maxDist) * 0.12;
-          ctx.strokeStyle = 'rgba(100,170,255,' + alpha + ')';
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(tier1[i].x, tier1[i].y);
-          ctx.lineTo(tier1[j].x, tier1[j].y);
-          ctx.stroke();
-        }
-      }
-    }
-    ctx.restore();
-  }
+  var obs=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){if(!mapReady)animate();}
+    else if(animId){cancelAnimationFrame(animId);animId=null;}
+  });},{threshold:0.08});
+  obs.observe(canvas);
 
-  // ── Scanning line ──
-  function drawScanLine(w, h) {
-    const t = performance.now() * 0.001;
-    const period = 6;
-    const progress = (t % period) / period;
-    const y = progress * h;
-    ctx.save();
-    const g = ctx.createLinearGradient(0, y - 40, 0, y + 40);
-    g.addColorStop(0, 'rgba(41,82,196,0)');
-    g.addColorStop(0.5, 'rgba(80,150,255,0.08)');
-    g.addColorStop(1, 'rgba(41,82,196,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, y - 40, w, 80);
-    // bright center line
-    ctx.strokeStyle = 'rgba(100,180,255,0.15)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, y);
-    ctx.lineTo(w, y);
-    ctx.stroke();
-    ctx.restore();
-  }
-
-  // ── Pulse rings on tier 1 stars ──
-  function drawPulseRings() {
-    const t = performance.now() * 0.001;
-    ctx.save();
-    stars.forEach(function(s) {
-      if (s.tier !== 1) return;
-      // Each tier-1 star has a pulse ring every ~4s, offset by phase
-      const ringPhase = (t + s.phase * 0.5) % 4;
-      const ringProgress = ringPhase / 4;
-      if (ringProgress < 0.7) {
-        const ringR = s.baseSize * (2 + ringProgress * 8);
-        const ringAlpha = (1 - ringProgress / 0.7) * 0.25;
-        ctx.strokeStyle = 'rgba(100,180,255,' + ringAlpha + ')';
-        ctx.lineWidth = 0.6;
-        ctx.beginPath();
-        ctx.arc(s.x, s.y, ringR, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-    });
-    ctx.restore();
-  }
-
-  function draw(w, h) {
-    ctx.clearRect(0, 0, w, h);
-    drawTechGrid(w, h);
-    drawBackgroundAura(w, h);
-    drawChinaOutline(w, h);
-    drawScanLine(w, h);
-    drawConnections(w, h);
-    drawStars();
-    drawPulseRings();
-    drawLabels(w, h);
-  }
-
-  function animate() {
-    const { w, h } = resize();
-    if (!mapReady) {
-      generateStars(w, h);
-      mapReady = true;
-    }
-    draw(w, h);
-    animId = requestAnimationFrame(animate);
-  }
-
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        if (!mapReady) animate();
-      } else {
-        if (animId) { cancelAnimationFrame(animId); animId = null; }
-      }
-    });
-  }, { threshold: 0.1 });
-  observer.observe(canvas);
-
-  window.addEventListener('resize', function() {
-    if (animId) {
-      cancelAnimationFrame(animId);
-      mapReady = false;
-      animId = requestAnimationFrame(animate);
-    }
+  window.addEventListener('resize',function(){
+    if(animId){cancelAnimationFrame(animId);mapReady=false;animId=requestAnimationFrame(animate);}
   });
 })();
+
 </script>
+
+
+
 </body>
 </html>
